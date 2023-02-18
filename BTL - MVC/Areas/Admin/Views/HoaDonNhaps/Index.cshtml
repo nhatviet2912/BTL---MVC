@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BTL___MVC.Database.HoaDonNhap>
+
+@{
+    ViewBag.Title = "Hóa Đơn Nhập";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int tt = 1;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink(" Thêm mới", "Create", null, new { @class = "btn btn-primary fa fa-plus" })
+</p>
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã Hóa đơn nhập
+            </th>
+            <th>
+                Thành tiền
+            </th>
+            <th>
+                Ngày nhập
+            </th>
+            <th>
+                Tên nhà cung cấp
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hoadonnhap_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thanhtien)
+                    @*@Html.FormatValue(item.Thanhtien, "{0:#,##0.00 đ}")*@
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaynhap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NCC.Tenncc)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Hoadonnhap_id }, new { @class = "btn btn-warning fa fa-pencil" }) |
+                    @Html.ActionLink(" ", "CTHDN", new { id = item.Hoadonnhap_id }, new { @class = "btn btn-info fa fa-eye" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Hoadonnhap_id }, new { @class = "btn btn-danger fa fa-trash" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

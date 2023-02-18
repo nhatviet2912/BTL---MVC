@@ -1,0 +1,106 @@
+﻿@model BTL___MVC.Database.SanPham
+
+@{
+    ViewBag.Title = "Xem sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>SanPham</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensanpham)
+        </dd>
+
+        <dt>
+            Ảnh
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Anh)*@
+            <img src="~/Image/@Model.Anh" style="width: 150px; height : 150px; " />
+            
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            Giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Mota)
+        </dd>
+        <dt>
+            Kích cỡ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kichco)
+        </dd>
+        <dt>
+            Độ phân giải
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dophangiai)
+        </dd>
+        <dt>
+            Gía khuyến mãi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giakhuyenmai)
+        </dd>
+
+        <dt>
+            Tên loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiSanPham.Tenloai)
+        </dd>
+        <dt>
+            Lượt đánh giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Viewcount)
+        </dd>
+        <dt>
+            Giảm giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReducePrice)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Sanpham_id })  <hr />
+    @Html.ActionLink("Trở lại", "Index")
+</p>

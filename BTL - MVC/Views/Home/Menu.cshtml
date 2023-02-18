@@ -1,0 +1,15 @@
+﻿@model List<BTL___MVC.Database.LoaiSanPham>
+@{
+    Layout = null;
+}
+
+<ul class="submenu">
+    @foreach (var sp in Model)
+    {
+        <li class="submenu__item">
+            <a class="submenu__item-link" href="/Home/Category/@sp.Maloai_id"><i class="navbar__list-icons fa-solid fa-tv"></i>@sp.Tenloai</a>
+        </li>
+    }
+
+
+</ul>

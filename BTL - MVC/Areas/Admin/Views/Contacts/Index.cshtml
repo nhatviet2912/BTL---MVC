@@ -1,0 +1,90 @@
+﻿@model IEnumerable<BTL___MVC.Database.LienHe>
+
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int tt = 1;
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LienHe_id)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hoten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sdt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diachi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tieude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Noidung)
+            </th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt ++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LienHe_id)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hoten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sdt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tieude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Noidung)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Delete", new { id = item.LienHe_id }, new { @class = "btn btn-danger fa fa-trash" })
+
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+@section jsFooter{
+    <script src="~/Assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/admin/js/demo/datatables-demo.js"></script>
+}

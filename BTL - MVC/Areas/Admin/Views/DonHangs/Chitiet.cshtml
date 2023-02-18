@@ -1,0 +1,99 @@
+﻿@model IEnumerable<BTL___MVC.Database.CTDH>
+
+@{
+    ViewBag.Title = "Chi Tiet Hóa Đơn Bán";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int tt = 1;
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã chi tiết hóa đơn bán
+            </th>
+            <th>
+                Mã đơn hàng
+            </th>
+            <th>
+                Mã sản phẩm
+            </th>
+            <th>
+                Tên sản phẩm
+            </th>
+            <th>
+                Ảnh
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Giá
+            </th>
+            <th>
+                Tổng tiền
+            </th>
+            <th>
+                Họ tên
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt ++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ctdh_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Donhang_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sanpham_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tensanpham)
+                </td>
+                <td>
+
+                    <img src="~/Image/@item.Anh" width="100px" height="100px" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soluong)
+                </td>
+
+                <td>
+                    @Html.FormatValue(item.Giakhuyenmai, "{0:#,##0.000 đ}")
+
+                </td>
+                <td>
+
+                    @Html.FormatValue(item.Tongtien, "{0:#,##0.000 đ}")
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonHang.Hoten)
+                </td>
+
+                <td>
+
+                    @*@Html.ActionLink(" ", "Details", new { id = item.Ctdh_id }, new { @class = "btn btn-info fa fa-eye" }) |*@
+                    @Html.ActionLink(" ", "Delete", new { id = item.Ctdh_id }, new { @class = "btn btn-danger fa fa-trash" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

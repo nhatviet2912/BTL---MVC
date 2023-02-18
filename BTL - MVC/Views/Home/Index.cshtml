@@ -1,0 +1,128 @@
+﻿@model PagedList.IPagedList<BTL___MVC.Database.SanPham>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Home Page";
+    var sl = (List<BTL___MVC.Database.Slider>)ViewBag.sl;
+
+}
+<div class="slideshow">
+    <div class="container">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+                <li data-target="#demo" data-slide-to="3"></li>
+                <li data-target="#demo" data-slide-to="4"></li>
+                <li data-target="#demo" data-slide-to="5"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/Content/IMG/slideshow_1.png" alt="" width="1100" height="400">
+                </div>
+                @foreach (var a in sl)
+                {
+                    <div class="carousel-item ">
+                        <img src="/Image/@a.Anh" alt="" width="1100" height="400">
+                    </div>
+                }
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="run-text container">
+    <div class="r-txt">
+        <b>Liên hệ với Điện máy xanh</b>
+        <i class="fas fa-caret-right"></i>
+    </div>
+    <div class="r1-txt">
+        <marquee>
+            Điện máy xanh &nbsp; Gọi mua: 1800.1061 (7:30 - 22:00)
+
+            &nbsp;Kỹ thuật: 1800.1764 (7:30 - 22:00)
+
+            &nbsp;Khiếu nại: 1800.1063 (8:00 - 21:30)
+
+            &nbsp;Bảo hành: 1800.1065 (8:00 - 21:00) &nbsp; Địa chỉ: Dân Tiến
+            Khoái Châu, Hưng Yên
+        </marquee>
+    </div>
+</div>
+<div class="Container">
+    <div class="container">
+        <div class="Container__title ">
+            <b>Tivi bán chạy</b>
+        </div>
+        <div class="row">
+            @foreach (var sp in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-item">
+                        <a href="/Home/ProductDetail/@sp.Sanpham_id" class="Home-product-item">
+                            <img src="~/Image/@sp.Anh" class="Home-product-item__img">
+                            <div class="Home-product-item__sale">
+                                <img class="Home-product-item__sale-icon" src="~/Content/IMG/ball.png">
+                                <span class="Home-product-item__sale-title">WORLD CUP SALE TO</span>
+                            </div>
+                            <h4 class="Home-product-item__name">
+                                @sp.Tensanpham
+                            </h4>
+                            <div class="Home-product-item__compare">
+                                <span class="Home-product-item__compare-item">@sp.Kichco</span>
+                                <span class="Home-product-item__compare-item">@sp.Dophangiai</span>
+                            </div>
+                            <div class="Home-product-item__title-online">
+                                <p>Online giá rẻ</p>
+                            </div>
+                            <div class="Home-product-item__price">
+                                <span class="Home_product-item__price-old">@string.Format("{0:#,##0.000 đ}", sp.Gia)  </span>
+                                <span class="Home_product-item__price-percent">@sp.ReducePrice%</span>
+                                <span class="Home_product-item__price-curent">@string.Format("{0:#,##0.000 đ}", sp.Giakhuyenmai) </span>
+                            </div>
+                            <div class="Home-product-item__action">
+                                <div class="Home-product-item__rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <span class="Home-product-item__like">
+                                    @sp.ReducePrice
+                                </span>
+                            </div>
+                            <div class="Home-product-item__sale-off">
+                                <img src="~/Content/IMG/docquyen.png">
+                            </div>
+
+                        </a>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+        
+        <div class="container " style="display: flex; justify-content: center; align-items: center;">
+            @*<span>
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+            </span>*@
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,193 @@
+﻿
+@model IEnumerable<BTL___MVC.Database.SanPham>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink(" Thêm sản phẩm", "Create", null, new { @class = "btn btn-primary fa fa-plus" })
+</p>
+<div ng-app="myApp" ng-controller="mycontrol">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group pull-left">
+                <label>Search</label>
+                <label>
+                    <input type="text" class="form-control" ng-model="searchText" />
+                </label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group pull-right">
+                Show
+                <label>
+                    <select class="form-control" ng-model="itemsPerPage">
+                        <option ng-value="1">1</option>
+                        <option ng-value="2">2</option>
+                        <option ng-value="5">5</option>
+                        <option ng-value="10">10</option>
+                        <option ng-value="25">25</option>
+                        <option ng-value="50">50</option>
+
+                    </select>
+                </label>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Mã loại
+                </th>
+                <th>
+                    Mã sản phẩm
+                </th>
+                <th>
+                    Tên sản phẩm
+                </th>
+                <th>
+                    Ảnh
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Gía
+                </th>
+                @*<th>
+                        Mô tả
+                    </th>*@
+                <th>
+                    Kích cỡ
+                </th>
+                <th>
+                    Độ phân giải
+                </th>
+                <th>
+                    Gía khuyến mãi
+                </th>
+                <th>
+                    Lượt đánh giá
+                </th>
+                <th>
+                    Giảm giá
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="data in datas | filter : searchText | limitTo: itemsPerPage: (currentPage - 1 ) * itemsPerPage">
+                <td>
+                    {{$index + 1}}
+                </td>
+                <td>
+                    {{data.Maloai_id}}
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Sanpham_id)*@
+                    {{data.Sanpham_id}}
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Tensanpham)*@
+                    {{data.Tensanpham}}
+                </td>
+                <td>
+                    <img src="~/Content/IMG/{{data.Anh}}" style="width: 150px; height: 150px;" />
+                    @*{{data.Anh}}*@
+
+
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Soluong)*@
+                    {{data.Soluong}}
+                </td>
+                <td>
+                    @*@Html.FormatValue( data. , "{0:#,##0}")*@
+
+                    {{data.Gia}}
+                </td>
+                @*<td>
+                        @Html.Raw(item.Mota)
+                        {{data.Mota}}
+                    </td>*@
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Kichco)*@
+                    {{data.Kichco}}
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Dophangiai)*@
+                    {{data.Dophangiai}}
+                </td>
+                <td>
+                    @*@Html.FormatValue(item.Giakhuyenmai, "{0:#,##0}")*@
+                    {{data.Giakhuyenmai}}
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Viewcount)*@
+                    {{data.Viewcount}}
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.ReducePrice)*@
+                    {{data.ReducePrice}}
+                </td>
+                <td>
+                    <a href="/Admin/SanPhams/SuaSP/{{data.Sanpham_id}}" class="btn btn-warning fa fa-pencil"></a>
+                    @*<a href="/Admin/SanPhams/Delete/{{data.Sanpham_id}}" class="btn btn-danger fa fa-trash"></a>*@
+                    <a href="#" class="btn btn-danger fa fa-trash" data-ng-click="delete(data.Sanpham_id)"></a>
+
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+    <ul uib-pagination total-items="datas.length" class="pagination-sm" ng-model="currentPage" max-size="5" items-per-page="itemsPerPage"  boundary-links="true" num-pages="numPages"></ul>
+</div>
+
+
+@section jsFooter{
+
+    <script>
+        var myApp = angular.module("myApp", ['ui.bootstrap']);
+        myApp.controller("mycontrol", mycontrol);
+        function mycontrol($scope, $http) {
+            $http(
+                {
+                    url: "/Admin/SanPhams/getData",
+                    method: "GET"
+
+                }
+            ).then(function (res) {
+                $scope.datas = res.data;
+            });
+
+
+            $scope.currentPage = 1;
+            $scope.itemsPerPage = 10;
+
+            $scope.delete = function (data) {
+                debugger
+                $http.post('/Admin/SanPhams/XoaSP', { id: data })
+                    .then(function (res) {
+                        if (res.msg == false) {
+                            alert("Xóa bản ghi không thành công");
+                        }
+                        else {
+                            alert("Xóa bản ghi thành công");
+                            window.location.href = "/Admin/SanPhams/Index";
+                        }
+                    });
+            };
+        }
+    </script>
+}

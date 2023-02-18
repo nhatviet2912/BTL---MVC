@@ -1,0 +1,78 @@
+﻿@model IEnumerable<BTL___MVC.Database.Khuyenmai>
+
+@{
+    ViewBag.Title = "Khuyến mại";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int tt = 1;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new {@class = "btn btn-primary fa fa-plus" })
+</p>
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(modle => modle.Khuyenmai_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tieude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anh)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Khuyenmai_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tieude)
+                </td>
+                <td>
+                    @Html.Raw(item.Mota)
+                </td>
+                <td>
+                    @if (item.Anh != null)
+                    {
+                        <img src="~/Image/@item.Anh" style="width:200px;" />
+
+                    }
+                    else
+                    {
+                        <img src="~/Image/user.png" style="width: 100px;" />
+
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Khuyenmai_id }, new { @class = "btn btn-warning fa fa-pencil" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Khuyenmai_id }, new { @class = "btn btn-info fa fa-eye" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Khuyenmai_id }, new { @class = "btn btn-danger fa fa-trash" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section jsFooter{
+    <script src="~/Assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/admin/js/demo/datatables-demo.js"></script>
+}

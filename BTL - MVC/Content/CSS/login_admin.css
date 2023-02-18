@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+body{
+    background-image: url(../IMG/admin_img.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    background-size: 100%;
+   
+}
+.lginQT {
+    position: relative;
+}
+.lginQT {
+    background-color: grey;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left:50% ;
+    width: 450px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    
+
+}
+.title {
+    font-size: 2.4rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.inp {
+    font-size: 1.6rem;
+    margin-top: 20px;
+    display: flex;
+}
+.iconlgadmin {
+    margin-left: 10px;
+    font-size: 30px;
+}
+#mk {
+    line-height: 30px;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+}
+#tk {
+    line-height: 30px;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+}
+.miss-pass {
+    position: relative;
+    margin-top: 10px;
+}
+.miss-pass a {
+    text-decoration: none;
+    color: white;
+    font-style: italic;
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+}
+.dangnhapadmin {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    height: 40px;
+    border-radius: 3px;
+    border: none;
+    font-size: 1.6rem;
+    width: 95%;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #00a2ff;
+    cursor: pointer;
+}

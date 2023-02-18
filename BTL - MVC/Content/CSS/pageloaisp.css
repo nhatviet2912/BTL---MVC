@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.inputloaisp {
+    padding-top: 20px;
+    font-size: 1.6rem;
+    width: 33.33333%;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.inputloaisp .title {
+    font-weight: 700;
+    line-height: 40px;
+}
+.inputloaisp .title hr {
+    font-weight: 200;
+    background-color: #00a2ff;
+    border: 1px solid #00a2ff ;
+}
+.inputloaisp_sp {
+    margin-top: 20px;  
+}
+.padding-box {
+    line-height: 40px;
+}
+.padding-box input {
+    line-height: 40px;
+    width: 100%;
+    outline: none;
+    border-radius: 4px ;
+    border: 1px solid #00a2ff;
+    padding-left: 10px;
+    font-size: 1.4rem;
+}
+.btn_loaisp {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-form {
+    line-height: 40px;
+    outline: none;
+    border-radius: 4px;
+    padding-left:10px ;
+    padding-right:10px ;
+    font-size: 1.4rem;
+    color: aliceblue;
+    cursor: pointer;
+}
+.btn_icon {
+    margin-right: 5px;
+}
+.dsloaisp {
+    padding-top: 20px;
+    font-size: 1.6rem;
+    margin-right: 40px;
+    width: 50%;
+    
+}
+.dsloaisp .title {
+    line-height: 40px;
+    font-weight: 700;
+}
+.dsloaisp .title hr {
+    font-weight: 200;
+    background-color: #00a2ff;
+    border: 1px solid #00a2ff ;
+    width: 100%;
+}
+.dsloaisp_padding-box {
+    margin-top: 20px;
+}
+.dsloaisp_padding-box table {
+    width: 100%;
+}
+.dsloaisp_padding-box table input[type=checkbox] {
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+}
+.dsloaisp_padding-box table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid #00a2ff;
+}
+.box-sum {
+    display: flex;
+    justify-content: space-between;
+    line-height: 50px;
+    background-color: #FD974F;
+    border: 1px solid #FD974F;
+    padding: 10px;
+    border-radius: 4px;
+}
+.box-left {
+    font-weight: 600;
+    color: aliceblue;
+}
+.box-right button {
+    padding: 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+.box-right button:hover {
+    background-color: #C60000;
+}
+/* CSS SẢN PHẨM*/
+.padding-box select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #00a2ff;;
+    width: 100%;
+    border-radius: 3px;
+    outline: none;
+}

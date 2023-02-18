@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+  
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink(" Thêm loại sản phẩm", "ThemLSP", null, new { @class = "btn btn-primary fa fa-plus" })
+</p>
+<div ng-app="myApp" ng-controller="mycontrol">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group pull-left">
+                <label>Search</label>
+                <label>
+                    <input type="text" class="form-control" ng-model="searchText" />
+                </label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group pull-right">
+                Show
+                <label>
+                    <select class="form-control" ng-model="itemsPerPage">
+                        <option ng-value="1">1</option>
+                        <option ng-value="2">2</option>
+                        <option ng-value="5">5</option>
+                        <option ng-value="10">10</option>
+                        <option ng-value="25">25</option>
+                        <option ng-value="50">50</option>
+
+                    </select>
+                </label>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Mã loại
+                </th>
+                <th>
+                    Tên loại
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in datas | filter: searchText | limitTo: itemsPerPage: (currentPage - 1 ) * itemsPerPage">
+                <td>{{$index + 1}}</td>
+                <td>{{data.Maloai_id}}</td>
+                <td>{{data.Tenloai}}</td>
+
+                <td>
+                    <a href="/Admin/LoaiSanPhams/SuaLSP/{{data.Maloai_id}}" class="btn btn-warning fa fa-pencil" data-ng-click="select(data.Maloai_id)"></a>
+                    <a href="#" class="btn btn-danger fa fa-trash" data-ng-click="delete(data.Maloai_id)"></a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    <ul uib-pagination total-items="datas.length" class="pagination-sm" ng-model="currentPage" max-size="5" items-per-page="itemsPerPage" boundary-links="true" num-pages="numPages"></ul>
+</div>
+
+
+@section jsFooter{
+
+    <script>
+        var myApp = angular.module("myApp", ['ui.bootstrap']);
+        myApp.controller("mycontrol", mycontrol);
+        function mycontrol($scope, $http) {
+            $http(
+                {
+                    url: "getAll",
+                    method: "GET"
+
+                }
+            ).then(function (res) {
+                $scope.datas = res.data;
+            });
+
+            $scope.currentPage = 1;
+            $scope.itemsPerPage = 10;
+
+            $scope.delete = function (data) {
+                debugger
+                $http.post('/Admin/LoaiSanPhams/XoaLSP', { id: data })
+                    .then(function (res) {
+                        if (res.msg == false) {
+                            alert("Xóa bản ghi không thành công");
+                        }
+                        else {
+                            alert("Xóa bản ghi thành công");
+                            window.location.href = "/Admin/LoaiSanPhams/Index";
+                        }
+                    });
+            };
+
+
+        }
+    </script>
+}

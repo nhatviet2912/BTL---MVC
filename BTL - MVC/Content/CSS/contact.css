@@ -1,0 +1,29 @@
+.page-top{
+    margin-top: 200px;
+    font-size: 1.6rem;
+}
+.page-heading-title{
+    font-size: 4rem;
+    font-weight: 400;
+}
+.contact-title{
+    font-size: 3rem;
+}
+
+.footer-widget-l-content li{
+    list-style: none;
+}
+.address{
+    padding: 12px 0;
+}
+.contact-my{
+    font-size: 3rem;
+}
+.btn-enter{
+    padding: 6px 16px ;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+.contact-address{
+    margin-top: 50px;
+}

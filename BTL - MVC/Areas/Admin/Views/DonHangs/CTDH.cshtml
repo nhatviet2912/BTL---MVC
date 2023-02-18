@@ -1,0 +1,81 @@
+﻿@model BTL___MVC.Database.CTDH
+
+@{
+    ViewBag.Title = "CTDH";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                Mã chi tiết đơn hàng
+            </th>
+            <th>
+                Mã đơn hàng
+            </th>
+            <th>
+                Mã sản phẩm
+            </th>
+            <th>
+                Tên sản phẩm
+            </th>
+            <th>
+                Ảnh
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Gía
+            </th>
+            <th>
+                
+                Tổng tiền
+            </th>
+ 
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.Ctdh_id
+            </td>
+            <td>
+                @Model.Donhang_id
+            </td>
+            <td>
+                @Model.Sanpham_id
+            </td>
+            <td>
+                @Model.Tensanpham
+            </td>
+            <td>
+                <img src="~/Image/@Model.Anh" style="width: 100px; height: 100px;"/>
+            </td>
+            <td>
+                @Model.Soluong
+            </td>
+            <td>
+                @Html.FormatValue(Model.Giakhuyenmai, "{0:#,##0.000 đ}")
+
+            </td>
+            <td>
+                @Html.FormatValue(Model.Tongtien, "{0:#,##0.000 đ}")
+            </td>
+            @*<td>
+                @Html.ActionLink(" ", "XacNhan", new { id = item.Donhang_id }, new { @class = "btn btn-warning fa fa-check", @onclick = "return confirm('Bạn có bán đơn hàng này không?')" }) |
+                @Html.ActionLink(" ", "CTDH", new { id = item.Donhang_id }, new { @class = "btn btn-warning fa fa-pencil" }) |
+
+                <a href="/Admin/DonHangs/Delete/@item.Donhang_id" class="btn btn-danger fa fa-trash" onclick="return confirm('Bạn có hủy đơn hàng này không?')"></a>
+            </td>*@
+        </tr>
+
+
+
+    </tbody>
+
+
+</table>

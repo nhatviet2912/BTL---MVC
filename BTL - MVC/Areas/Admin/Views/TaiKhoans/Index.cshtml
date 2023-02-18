@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BTL___MVC.Database.TaiKhoan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int tt = 1;
+}
+
+<h2>Tài khoản</h2>
+
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Tên tài khoản
+            </th>
+            <th>
+                Mật khẩu
+            </th>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Ảnh
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tentk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Matkhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhachHang.Tenkhachhang)
+                </td>
+                <td>
+                    <img src="~/Image/@item.Anh" style="width: 100px; height: 100px;"/>
+                </td>
+                @*<td>
+            @Html.ActionLink(" ", "Delete", new { id = item.Tentk }, new { @class = "btn btn-danger fa fa-trash" })
+        </td>*@
+            </tr>
+        }
+    </tbody>
+
+
+</table>

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Dangki";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="signup-container">
+    <div class="container">
+        
+        <div class="row">
+            <div class="auth-form col-lg-6 col-md-6 col-sm-12 col-12 ">
+                <form action="/Login/Dangki" method="post">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Đăng Ký</h3>
+                        <span class="auth-form__heading2">Tạo tài khoản Điện máy xanh ngay</span>
+                    </div>
+                    <div class="auth-form__form">
+                        
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" id="hoten" name="hoten" placeholder="Họ và tên...">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" id="sdt" name="sdt" placeholder="Số điện thoại của bạn...">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" id="email" name="email" placeholder="Email...">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" id="diachi" name="diachi" placeholder="Địa chỉ...">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" id="tentk" name="tentk" placeholder="Nhập tên tài khoản...">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" id="matkhau" name="matkhau" placeholder="Tạo một mật khẩu có ít nhất 5 ký tự...">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" id="nhaplaipass" name="nhaplaipass" placeholder="Nhập lại mật khẩu...">
+                        </div>
+                        <h4 style="color: red; padding-top: 14px;">
+                            @ViewBag.loi
+                        </h4>
+
+                    </div>
+                    <div class="auth-form__controls">
+                        <button type="submit" class="btn">Đăng Ký</button>
+                    </div>
+                    <div class="auth-form__socials">
+                        <p> <a href=""> Bằng việc Đăng ký, bạn đã đồng ý với điều khoản sử dụng của Điện máy xanh </a></p>
+                        <div class="auth-form__socials1">
+                            <span>Hoặc sử dụng</span>
+                        </div>
+                        <div class="auth__socials-btn">
+                            <button class="btn1" style="margin-right: 10px; background-color:#0b4cc5;"><i class="fa-brands fa-facebook-square" style="padding-right: 5px;"></i>Facebook</button>
+                            <button class="btn1" style="background-color: #d11919;"><i class="fa-brands fa-google-plus-square" style="padding-right: 5px;"></i>Google</button>
+                        </div>
+                    </div>
+                    <div class="auth-form__footer">
+                        <h5>Bạn đã có tài khoản?</h5>
+                        <span style="display: block; padding: 8px 0;"> <a href="/Login/Index"> Đăng nhập </a></span>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+

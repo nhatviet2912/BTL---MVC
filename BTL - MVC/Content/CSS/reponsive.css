@@ -1,0 +1,122 @@
+/* Mobile & tablet */
+@media (max-width:1023px) {
+    .hide-on-tablet-mobile {
+        display: none;
+    }
+    :root {
+        --Header-height:90px ;
+        --navbar-height:0 px;
+        --Header-navbar-height:0px;
+    }
+    .Home-product-item {
+        margin-top: 20px;
+    }
+    .container-sp {
+        margin-top: 110px;
+        margin-bottom: 20px;
+    }
+    .container-sp__product {
+        padding: 0px 10px;
+    }
+    .Home-product-item__sale-off img {
+        top:35%
+    }
+}
+
+/*Tablet*/
+@media (min-width:740px)and (max-width:1023px) {
+    .hide-on-tablet {
+        display: none;
+    }
+    .Home-product-item {
+        margin-top: 20px;
+    }
+    .Home-product-item__sale-off img {
+        top:150px
+    }
+    .grid.wide {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+    .Home-product-item__img {
+        padding: 25px;
+    }
+    .container__product-img {
+        max-width: 250px;
+        max-height: 336px;
+        margin:0 20%;
+    }
+    .container__product-thongsochitiet table {
+        font-size: 1.4rem;
+        line-height: 30px;
+        margin-top: 10px;
+    }
+    .Header-with-search {
+        height: 115px;
+   }
+    
+} 
+
+/*Mobile*/
+@media (max-width:739px) {
+    .hide-on-mobile {
+        display: none;
+    }
+    .Home-product-item {
+        margin-top: 20px;
+    }
+    .Footer__colum {
+        padding-left: 20px;
+    }
+    .Home-product-item__img {
+        padding: 20px;
+    }
+    .container__product-bigimg {
+        display: flex;
+        justify-content: center;
+    } 
+    .container__product-name {
+        background-color: var(--white-coler);
+        color: var(----text-coler);
+    }
+    .login-container_home {
+        margin-top: 100px;
+    }
+    .auth-form {
+        border: none;
+        border-radius: 0px;
+        box-shadow: none;
+    }
+    .auth-form__header {
+        text-align: center;
+    }
+    .auth-__socials-btn {
+        flex-wrap: wrap;
+    }
+    .btn1 {
+        margin-bottom: 10px;
+    }
+    .auth-form__heading2 {
+        display: none;
+   }
+   .auth-form__header  {
+        margin-top: 0px;
+   }
+   .Header-with-search {
+        height: 115px;
+   }
+}
+/* pc */
+@media (min-width: 1024px){
+    .Home-product-item__sale-off img {
+        top:30%
+    }
+    /* .row{
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -4px;
+        margin-right: -4px;
+        justify-content: space-between;
+    } */
+}

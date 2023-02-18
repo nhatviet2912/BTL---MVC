@@ -1,0 +1,102 @@
+﻿@model IEnumerable<BTL___MVC.Database.NhanVien>
+
+@{
+    ViewBag.Title = "Nhân Viên";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int tt = 1;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink(" Thêm nhân viên", "Create", null, new { @class = "btn btn-primary fa fa-plus" })
+</p>
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã nhân viên
+            </th>
+            <th>
+                Tên nhân viên
+            </th>
+            <th>
+                Ngày sinh
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Ảnh
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nhanvien_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tennhanvien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaysinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sdt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (item.Anh != null)
+                    {
+                        <img src="~/Image/@item.Anh" style="width:100px;" />
+
+                    }
+                    else
+                    {
+                        <img src="~/Image/user.png" style="width: 100px;" />
+
+                    }
+                </td>
+                
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Nhanvien_id }, new { @class = "btn btn-warning fa fa-pencil" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Nhanvien_id }, new { @class = "btn btn-info fa fa-eye" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Nhanvien_id }, new { @class = "btn btn-danger fa fa-trash" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>
+
+
+
+@section jsFooter{
+    <script src="~/Assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/admin/js/demo/datatables-demo.js"></script>
+}

@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "QuenPass";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="login-container">
+    <div class="container">
+        <div class="login-container_home row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="margin:0 auto;">
+                <div class="auth-form" style=" padding-bottom: 24px;">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Quên mật khẩu</h3>
+                        <span class="auth-form__heading2">Tìm tài khoản của bạn</span>
+                    </div>
+                    <hr />
+                    <form action="/Login/QuenPass" method="post">
+                        <div class="auth-form__form">
+                            <div class="auth-form__group">
+                                <input type="text" class="auth-form__input" id="taikhoan" name="tentk" placeholder="Nhập Email / Sđt...">
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" class="auth-form__input" id="matkhaul1" name="matkhaul1" placeholder="Nhập mật khẩu của bạn...">
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" class="auth-form__input" id="matkhaul2" name="matkhaul2" placeholder="Nhập lại mật khẩu của bạn...">
+                            </div> 
+
+                        </div>
+                        <h4 style="color: red; padding-top: 14px;">
+                            @ViewBag.loi
+                        </h4>
+                        <div class="auth-form__controls" style="display: flex;">
+                            <a href="" type="text" class="btn " value="Hủy" style="background: #F49D1A; margin-right: 16px; line-height:36px;"/>Hủy</a>
+                            <input class="btn" type="submit" value="Gửi">
+                        </div>
+                    </form>
+  
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

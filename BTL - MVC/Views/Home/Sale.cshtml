@@ -1,0 +1,49 @@
+﻿
+
+@model PagedList.IPagedList<BTL___MVC.Database.Khuyenmai>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Sale";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="contents">
+    <div class="container">
+        <div class="row">
+            @foreach (var sa in Model)
+            {
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="home">
+                        <div class="home-img">
+                            <a href="#">
+                                <img src="~/Image/@sa.Anh" alt="">
+
+                            </a>
+                        </div>
+                        <div class="home-info">
+                            <div class="home-info-title">
+                                <a href="#" class="sale-title">@sa.Tieude</a>
+                            </div>
+                            <hr>
+                            <div class="home-info-text">
+                                @Html.Raw(sa.Mota)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+        <div class="container " style="display: flex; justify-content: center; align-items: center;">
+            @*<span>
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                </span>*@
+            @Html.PagedListPager(Model, page => Url.Action("Sale", new { page }))
+        </div>
+    </div>
+</div>
+

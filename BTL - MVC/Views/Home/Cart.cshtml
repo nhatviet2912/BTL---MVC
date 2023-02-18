@@ -1,0 +1,116 @@
+﻿@model IEnumerable<BTL___MVC.Database.CTDH>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+<div class=" Container_cart">
+    <div class="container">
+        <div class="Cart_content" style="padding-top: 10px;">
+            <a href="/Home/Index">
+                <i class="fa-solid fa-angle-left"></i>
+                Mua thêm sản phẩm khác
+            </a>
+        </div>
+        <div class="middlecart">
+            <div class="middlecart1" id="mycart">
+                @if (Model != null)
+                {
+                    foreach (var sp in Model)
+                    {
+                        <div class="middlecart1-two">
+                            <div class="middlecart1_img">
+                                <img src="~/Image/@sp.Anh" alt="">
+                            </div>
+                            <div class="middlecart1_content">
+                                @sp.Tensanpham
+                            </div>
+                            <div class="middlecart1_price">
+                                <div class="price_before">
+                                    @string.Format("{0:#,##0.000 đ}", sp.Gia)
+                                </div>
+                                <div class="price_after">
+                                    @string.Format("{0:#,##0.000 đ}", sp.Giakhuyenmai)
+                                </div>
+                                <div class="product_countor">
+                                    <div class="countor_minus">
+                                        <a href="/Home/Giamsl/@sp.Sanpham_id">
+                                            <i class="fa-solid fa-minus"></i>
+
+                                        </a>
+                                    </div>
+                                    <div class="countor_content">
+                                        @*@sp.Soluong*@
+                                        <input value="@sp.Soluong" style="width: 36px; border: none; text-align: center;"/>
+                                    </div>
+                                    <div class="countor_plus">
+                                        <a href="/Home/Themsl/@sp.Sanpham_id">
+                                            <i class="fa-solid fa-plus"></i>
+
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cart_total-content" id="tongtien">
+                                <div class="lable" style="font-weight: 600;">Giá: </div>
+                                <div class="" style="font-weight: 700;font-size: 1.8rem;color:#00a2ff;"><span id="tien"> @string.Format("{0:#,##0.000 đ}", sp.Soluong * sp.Giakhuyenmai) </span></div>
+                            </div>
+                            <div class="cart_function">
+                                <a href="/Home/Xoasp/@sp.Sanpham_id">
+                                    <i class="fa-solid fa-trash-can"></i>
+
+                                </a>
+                            </div>
+                        </div>
+                    }
+                    <hr class="dongke">
+                    <div class="cart_total">
+
+                        <div class="cart_total-content" id="tongtien">
+                            <div class="lable" style="font-weight: 600;">Tổng tiền</div>
+                            <div class="" style="font-weight: 700;font-size: 1.8rem;color:#00a2ff;"><span id="tien">@string.Format("{0:#,##0.000 đ}", ViewBag.tongtien)</span></div>
+                        </div>
+
+                        <hr class="dongke">
+
+                        <div class="payments" style="display: flex; ">
+                            <a href="/Home/Checkout" class="submitoder btn btn-primary" onclick="dathang()" style="margin-right: 24px;">
+                                <b> Tiến hành thanh toán</b>
+                            </a>
+                            <a class="submitoder btn btn-primary" href="/Home/Xoagh" style="margin-right: 24px;">
+                                <b>Xóa giỏ hàng</b>
+                            </a>
+                            @*<a class="submitoder btn btn-primary" href="/Home/CapNhap">
+                                <b>Cập nhập giỏ hàng</b>
+                            </a>*@
+
+                        </div>
+                    </div>
+
+                    <a href="" class="okdk">
+                        <P>Bằng cách đặt hàng, bạn đồng ý với Điều khoản sử dụng của Dienmayxanh</P>
+                    </a>
+
+                }
+                else
+                {
+                    <div class="cart_not">
+                        <p class="cart_not-icon"><i class="fa-solid fa-bag-shopping"></i></p>
+                    </div>
+                    <p style="text-align: center;">Không có sản phẩm nào trong giỏ hàng</p>
+                    <a href="/Home/Index" class="btn cart_not-btn">Về trang chủ</a>
+                    <p style="text-align: center; margin: 24px 0; padding-bottom: 24px;">Khi cần trợ giúp vui lòng gọi <a href="#">0901567443</a> (7h30 - 22h)</p>
+                }
+
+
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+

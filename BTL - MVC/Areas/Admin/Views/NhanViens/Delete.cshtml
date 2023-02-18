@@ -1,0 +1,91 @@
+﻿@model BTL___MVC.Database.NhanVien
+
+@{
+    ViewBag.Title = "Xóa nhân viên";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>NhanVien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên nhân viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tennhanvien)
+        </dd>
+
+        <dt>
+            Ngày sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaysinh)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sdt)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachi)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            Ảnh
+        </dt>
+        <dd>
+            <img src="~/Image/@Model.Anh" style="width: 150px; height : 150px; " />
+        </dd>
+        <dt>
+            Tên đăng nhập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tendangnhap)
+        </dd>
+        <dt>
+            Mật khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matkhau)
+        </dd>
+        <dt>
+            Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trangthai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-light" /> <hr />
+            @Html.ActionLink("Trở lại", "Index")
+        </div>
+    }
+</div>

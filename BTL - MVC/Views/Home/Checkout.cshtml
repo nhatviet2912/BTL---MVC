@@ -1,0 +1,88 @@
+﻿@model List<BTL___MVC.Database.CTDH>
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 col-sm-12">
+                <h1 class="tile">Chi tiết thanh toán</h1>
+                <hr>
+                <form action="/Home/Checkout" method="post">
+                    <div class="form-group ">
+                        <label for="username" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="Số điện thoại" class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" id="number" placeholder="Số điện thoại" name="number">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email" class="form-label"> Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" id="diachi" placeholder="Address" name="diachi">
+                    </div>
+                    <div class="form-check check">
+                        <input class="form-check-input ip-check" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <label class="form-check-label lb-check" for="flexCheckChecked">
+                            Create an account?
+                        </label>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <input class="btn btn-outline-primary btn-lg btn-oder" type="submit" value="Thanh toán">
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <div class="your-oder">
+                    <h1 class="tile">Đơn hàng của bạn</h1>
+                    <table class="table table-striped table-oder">
+                        <thead>
+                            <tr class="tr">
+                                <th>Hình ảnh</th>
+                                <th style="max-width: 260px;">Sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var sp in Model)
+                            {
+                                <tr class="tr">
+                                    <td>
+                                        
+                                        <img src="/Image/@sp.Anh" style="height: 100px;"/>
+                                    </td>
+                                    <td style="max-width: 260px;">@sp.Tensanpham</td>
+                                    <td>@sp.Soluong</td>
+                                    <td>@string.Format("{0:#,##0.000 }", sp.Giakhuyenmai * sp.Soluong) VNĐ</td>
+                                </tr>
+
+                            }
+                            
+                        </tbody>
+
+
+                    </table>
+                    <div class="total">
+                        <div>
+                            Tổng tiền
+                        </div>
+                        <div>
+                            @string.Format("{0:#,##0.000 }", ViewBag.tongtien) VNĐ
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-outline-primary btn-lg btn-oder" type="button">Thanh toán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

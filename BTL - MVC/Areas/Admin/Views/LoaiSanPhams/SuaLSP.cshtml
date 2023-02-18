@@ -1,0 +1,96 @@
+﻿@model BTL___MVC.Database.LoaiSanPham
+@{
+    ViewBag.Title = "Sửa loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div ng-app="myApp" ng-controller="myControl">
+    <form >
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>LoaiSanPham</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <input type="hidden"  class="form-control" value="@Model.Maloai_id" id="id"/>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên loại</label>
+                <div class="col-md-10">
+                    <input type="text" ng-model="loaiSanPham.Tenloai" class="form-control"/>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-success" value="Update" data-ng-click="update(loaiSanPham)" />
+
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <a href="/Admin/LoaiSanPhams/Index">Trở lại</a>
+        </div>
+    </form>
+</div>
+
+@section jsFooter{
+    <script>
+        var myApp = angular.module("myApp", [])
+        myApp.controller("myControl", function ($scope, $http, $httpParamSerializerJQLike) {
+            $scope.loaiSanPham = {};
+            debugger;
+            var config = {
+                params: {
+                    id: $("#id").val(),
+                }
+            }
+
+            $http.get("/Admin/LoaiSanPhams/GetByID", config).then(function (res) {
+                $scope.loaiSanPham = res.data;
+            }, function (err) {
+                alert("thất bại")
+            })
+
+            $scope.loaiSanPham = {};
+            $scope.update = function (loaiSanPham) {
+                debugger;
+                Token = angular.element('input[name="__RequestVerificationToken"]').attr('value');
+                $scope.loaiSanPham.__RequestVerificationToken = Token;
+                dataRequest = $scope.loaiSanPham;
+                $http({
+                    method: 'POST',
+                    url: '/Admin/LoaiSanPhams/SuaLSP',
+                    data: $httpParamSerializerJQLike(dataRequest),
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+
+                }).then(function (res) {
+                    if (res.msg == false) {
+                        alert("Sửa  bản ghi lỗi");
+                    }
+                    else {
+                        alert("Sửa bản ghi thành công");
+                        window.location.href = "/Admin/LoaiSanPhams/Index";
+                    }
+                });
+            };
+        });
+
+    </script>
+
+}
+
+
+
+

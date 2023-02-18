@@ -1,0 +1,95 @@
+﻿@model IEnumerable<BTL___MVC.Database.DonHang>
+
+@{
+    ViewBag.Title = "DonHangDaBan";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int tt = 1;
+}
+
+<h2>Đơn Hàng Đã bán</h2>
+
+
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hoten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sdt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diachi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaydat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tongtien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trangthai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhachHang.Tenkhachhang)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt ++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hoten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sdt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaydat)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Tongtien)*@
+                    @Html.FormatValue(item.Tongtien, "{0:#,##0.000 đ}")
+
+                </td>
+                <td>
+                    @if(item.Trangthai == 2)
+                    {
+                        <span>Đơn hàng đã bán</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhachHang.Tenkhachhang)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.CTDHs.)
+
+                </td>*@
+                <td>
+                    
+                    @Html.ActionLink(" ", "CTDH", new { id = item.Donhang_id }, new { @class = "btn btn-info fa fa-eye" }) 
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

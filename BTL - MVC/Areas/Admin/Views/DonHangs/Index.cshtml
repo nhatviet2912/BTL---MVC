@@ -1,0 +1,107 @@
+﻿@model IEnumerable<BTL___MVC.Database.DonHang>
+
+@{
+    ViewBag.Title = "Đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int tt = 1;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Donhang_id)*@
+                Mã đơn hàng
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.KhachHang.Khachhang_id)*@
+                Mã khách hàng
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Hoten)*@
+                Họ tên
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Sdt)*@
+                Số điện thoại
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Email)*@
+                Email
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Diachi)*@
+                Địa chỉ
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Ngaydat)*@
+                Ngày đặt
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Tongtien)*@
+                Tổng tiền
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Trangthai)*@
+                Trạng thái
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @(tt++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Donhang_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhachHang.Khachhang_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hoten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sdt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaydat)
+                </td>
+                <td>
+                    @Html.FormatValue(item.Tongtien, "{0:#,##0.000 đ}")
+                </td>
+                <td>
+                    @if(item.Trangthai == 1)
+                    {
+                        <span>Chờ thanh toán</span>
+                        
+                    }
+                </td>
+
+                <td>
+                    @Html.ActionLink(" ", "XacNhan", new { id = item.Donhang_id }, new { @class = "btn btn-warning fa fa-check", @onclick = "return confirm('Bạn có bán đơn hàng này không?')" }) |
+                    @Html.ActionLink(" ", "CTDH", new { id = item.Donhang_id }, new { @class = "btn btn-info fa fa-eye" }) |
+
+                    <a href="/Admin/DonHangs/Delete/@item.Donhang_id" class="btn btn-danger fa fa-trash" onclick="return confirm('Bạn có hủy đơn hàng này không?')"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

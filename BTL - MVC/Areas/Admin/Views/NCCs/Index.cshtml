@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BTL___MVC.Database.NCC>
+
+@{
+    ViewBag.Title = "Nhà cung cấp";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink(" Thêm mới", "Create", null, new { @class = "btn btn-primary fa fa-plus" })
+</p>
+<table class="table table-bordered table-striped" id="dataTable"> 
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã nhà cung cấp
+
+            </th>
+            <th>
+                Tên nhà cung cấp
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ncc_id)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tenncc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sdt)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Ncc_id }, new { @class = "btn btn-warning fa fa-pencil" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Ncc_id }, new { @class = "btn btn-info fa fa-eye" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Ncc_id }, new { @class = "btn btn-danger fa fa-trash" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

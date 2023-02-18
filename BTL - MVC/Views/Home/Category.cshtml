@@ -1,0 +1,74 @@
+﻿
+@model PagedList.IPagedList<BTL___MVC.Database.SanPham>
+@using PagedList.Mvc;
+@using BTL___MVC.Database
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="Container" style="margin-top: 200px;">
+    <div class="container">
+        <div class="Container__title ">
+            <b>@ViewBag.loaisp</b>
+        </div>
+        <div class="row">
+            @foreach (var sp in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-item">
+                        <a href="/Home/ProductDetail/@sp.Sanpham_id" class="Home-product-item">
+                            <img src="~/Image/@sp.Anh" class="Home-product-item__img">
+                            <div class="Home-product-item__sale">
+                                <img class="Home-product-item__sale-icon" src="~/Content/IMG/icon1.png">
+                                <span class="Home-product-item__sale-title"> giảm sốc</span>
+                            </div>
+                            <h4 class="Home-product-item__name">
+                                @sp.Tensanpham
+                            </h4>
+                            <div class="Home-product-item__compare">
+                                <span class="Home-product-item__compare-item">@sp.Kichco</span>
+                                <span class="Home-product-item__compare-item">@sp.Dophangiai</span>
+                            </div>
+                            <div class="Home-product-item__title-online">
+                                <p>Online giá rẻ</p>
+                            </div>
+                            <div class="Home-product-item__price">
+                                <span class="Home_product-item__price-old">@sp.Gia đ</span>
+                                <span class="Home_product-item__price-percent">@sp.ReducePrice%</span>
+                                <span class="Home_product-item__price-curent">@sp.Giakhuyenmai đ</span>
+                            </div>
+                            <div class="Home-product-item__action">
+                                <div class="Home-product-item__rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <span class="Home-product-item__like">
+                                    @sp.ReducePrice
+                                </span>
+                            </div>
+                            <div class="Home-product-item__sale-off">
+                                <img src="~/Content/IMG/docquyen.png">
+                            </div>
+
+                        </a>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+
+        <div class="container " style="display: flex; justify-content: center; align-items: center;">
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+
+    </div>
+</div>
+

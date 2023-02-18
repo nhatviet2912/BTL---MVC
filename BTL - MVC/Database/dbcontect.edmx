@@ -1,0 +1,1157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BTL_MVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BinhLuan">
+          <Key>
+            <PropertyRef Name="Binhluan_id" />
+          </Key>
+          <Property Name="Binhluan_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="300" />
+          <Property Name="Hoten" Type="nvarchar" MaxLength="100" />
+          <Property Name="Noidung" Type="ntext" />
+          <Property Name="Khachhang_id" Type="int" />
+          <Property Name="Sanpham_id" Type="int" />
+        </EntityType>
+        <EntityType Name="CTDH">
+          <Key>
+            <PropertyRef Name="Ctdh_id" />
+          </Key>
+          <Property Name="Ctdh_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Donhang_id" Type="int" />
+          <Property Name="Sanpham_id" Type="int" />
+          <Property Name="Tensanpham" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Soluong" Type="int" />
+          <Property Name="Gia" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Tongtien" Type="float" />
+          <Property Name="Giakhuyenmai" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="CTHDN">
+          <Key>
+            <PropertyRef Name="Macthdn_id" />
+          </Key>
+          <Property Name="Macthdn_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hoadonnhap_id" Type="int" />
+          <Property Name="Sanpham_id" Type="int" />
+          <Property Name="Dongia" Type="float" />
+          <Property Name="Soluong" Type="int" />
+        </EntityType>
+        <EntityType Name="DonHang">
+          <Key>
+            <PropertyRef Name="Donhang_id" />
+          </Key>
+          <Property Name="Donhang_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Khachhang_id" Type="int" />
+          <Property Name="Hoten" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sdt" Type="nchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ngaydat" Type="datetime" />
+          <Property Name="Tongtien" Type="float" />
+          <Property Name="Trangthai" Type="int" />
+        </EntityType>
+        <EntityType Name="HoaDonNhap">
+          <Key>
+            <PropertyRef Name="Hoadonnhap_id" />
+          </Key>
+          <Property Name="Hoadonnhap_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Thanhtien" Type="float" />
+          <Property Name="Ngaynhap" Type="datetime" />
+          <Property Name="Ncc_id" Type="int" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="Khachhang_id" />
+          </Key>
+          <Property Name="Khachhang_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tenkhachhang" Type="nvarchar" MaxLength="100" />
+          <Property Name="Anhdaidien" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ngaysinh" Type="datetime" />
+          <Property Name="Sdt" Type="nchar" MaxLength="20" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Khuyenmai">
+          <Key>
+            <PropertyRef Name="Khuyenmai_id" />
+          </Key>
+          <Property Name="Khuyenmai_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tieude" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Mota" Type="ntext" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="LienHe">
+          <Key>
+            <PropertyRef Name="LienHe_id" />
+          </Key>
+          <Property Name="LienHe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hoten" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sdt" Type="nchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tieude" Type="nvarchar" MaxLength="500" />
+          <Property Name="Noidung" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="LoaiSanPham">
+          <Key>
+            <PropertyRef Name="Maloai_id" />
+          </Key>
+          <Property Name="Maloai_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tenloai" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MoreImg">
+          <Key>
+            <PropertyRef Name="MoreImg_id" />
+          </Key>
+          <Property Name="MoreImg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Anh1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Anh2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Anh3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Anh4" Type="nvarchar" MaxLength="100" />
+          <Property Name="Anh5" Type="nvarchar" MaxLength="100" />
+          <Property Name="Anh6" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sanpham_id" Type="int" />
+        </EntityType>
+        <EntityType Name="NCC">
+          <Key>
+            <PropertyRef Name="Ncc_id" />
+          </Key>
+          <Property Name="Ncc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tenncc" Type="nvarchar" MaxLength="100" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sdt" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="Nhanvien_id" />
+          </Key>
+          <Property Name="Nhanvien_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tennhanvien" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ngaysinh" Type="datetime" />
+          <Property Name="Sdt" Type="nchar" MaxLength="20" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="Sanpham_id" />
+          </Key>
+          <Property Name="Sanpham_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Maloai_id" Type="int" />
+          <Property Name="Tensanpham" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Soluong" Type="int" />
+          <Property Name="Gia" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Mota" Type="ntext" />
+          <Property Name="Kichco" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dophangiai" Type="nvarchar" MaxLength="100" />
+          <Property Name="Giakhuyenmai" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Viewcount" Type="int" />
+          <Property Name="ReducePrice" Type="int" />
+        </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Slider_id" />
+          </Key>
+          <Property Name="Slider_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="Tentk" />
+          </Key>
+          <Property Name="Tentk" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Matkhau" Type="nvarchar" MaxLength="50" />
+          <Property Name="Khachhang_id" Type="int" />
+          <Property Name="usergroup_id" Type="int" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ThongSoKyThuat">
+          <Key>
+            <PropertyRef Name="ThongSo_id" />
+          </Key>
+          <Property Name="ThongSo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sanpham_id" Type="int" />
+          <Property Name="Hedieuhang" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ungdungphobien" Type="nvarchar" MaxLength="500" />
+          <Property Name="Congnghehinhanh" Type="nvarchar" MaxLength="500" />
+          <Property Name="Dieukhienbanggiongnoi" Type="nvarchar" MaxLength="500" />
+          <Property Name="Remotethongminh" Type="nvarchar" MaxLength="500" />
+          <Property Name="Kichthuoc" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dophangiai" Type="nvarchar" MaxLength="50" />
+          <Property Name="Namramat" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="usergroup_id" />
+          </Key>
+          <Property Name="usergroup_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQuyen" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__BinhLuan__Khachh__2F8501C7">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Khachhang_id" />
+            </Principal>
+            <Dependent Role="BinhLuan">
+              <PropertyRef Name="Khachhang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuan__Sanpha__30792600">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="BinhLuan">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTDH__Donhang_id__26EFBBC6">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTDH" Type="Self.CTDH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="Donhang_id" />
+            </Principal>
+            <Dependent Role="CTDH">
+              <PropertyRef Name="Donhang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTDH__Sanpham_id__27E3DFFF">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTDH" Type="Self.CTDH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="CTDH">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHDN__Hoadonnha__190BB0C3">
+          <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTHDN" Type="Self.CTHDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonNhap">
+              <PropertyRef Name="Hoadonnhap_id" />
+            </Principal>
+            <Dependent Role="CTHDN">
+              <PropertyRef Name="Hoadonnhap_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHDN__Sanpham_i__19FFD4FC">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTHDN" Type="Self.CTHDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="CTHDN">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonHang__Khachha__24134F1B">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Khachhang_id" />
+            </Principal>
+            <Dependent Role="DonHang">
+              <PropertyRef Name="Khachhang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonNha__Ncc_i__162F4418">
+          <End Role="NCC" Type="Self.NCC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NCC">
+              <PropertyRef Name="Ncc_id" />
+            </Principal>
+            <Dependent Role="HoaDonNhap">
+              <PropertyRef Name="Ncc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MoreImg__Sanpham__7246E95D">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MoreImg" Type="Self.MoreImg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="MoreImg">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SanPham__Maloai___09C96D33">
+          <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiSanPham">
+              <PropertyRef Name="Maloai_id" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="Maloai_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__Khachh__0559BDD1">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Khachhang_id" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="Khachhang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__usergr__064DE20A">
+          <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="usergroup_id" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="usergroup_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThongSoKy__Sanph__5F691F13">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ThongSoKyThuat" Type="Self.ThongSoKyThuat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="ThongSoKyThuat">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BTL_MVCModelStoreContainer">
+          <EntitySet Name="BinhLuan" EntityType="Self.BinhLuan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTDH" EntityType="Self.CTDH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTHDN" EntityType="Self.CTHDN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDonNhap" EntityType="Self.HoaDonNhap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Khuyenmai" EntityType="Self.Khuyenmai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LienHe" EntityType="Self.LienHe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoreImg" EntityType="Self.MoreImg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NCC" EntityType="Self.NCC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThongSoKyThuat" EntityType="Self.ThongSoKyThuat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroup" EntityType="Self.UserGroup" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BinhLuan__Khachh__2F8501C7" Association="Self.FK__BinhLuan__Khachh__2F8501C7">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuan__Sanpha__30792600" Association="Self.FK__BinhLuan__Sanpha__30792600">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTDH__Donhang_id__26EFBBC6" Association="Self.FK__CTDH__Donhang_id__26EFBBC6">
+            <End Role="DonHang" EntitySet="DonHang" />
+            <End Role="CTDH" EntitySet="CTDH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTDH__Sanpham_id__27E3DFFF" Association="Self.FK__CTDH__Sanpham_id__27E3DFFF">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="CTDH" EntitySet="CTDH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHDN__Hoadonnha__190BB0C3" Association="Self.FK__CTHDN__Hoadonnha__190BB0C3">
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
+            <End Role="CTHDN" EntitySet="CTHDN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHDN__Sanpham_i__19FFD4FC" Association="Self.FK__CTHDN__Sanpham_i__19FFD4FC">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="CTHDN" EntitySet="CTHDN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonHang__Khachha__24134F1B" Association="Self.FK__DonHang__Khachha__24134F1B">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="DonHang" EntitySet="DonHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonNha__Ncc_i__162F4418" Association="Self.FK__HoaDonNha__Ncc_i__162F4418">
+            <End Role="NCC" EntitySet="NCC" />
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MoreImg__Sanpham__7246E95D" Association="Self.FK__MoreImg__Sanpham__7246E95D">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="MoreImg" EntitySet="MoreImg" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SanPham__Maloai___09C96D33" Association="Self.FK__SanPham__Maloai___09C96D33">
+            <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__Khachh__0559BDD1" Association="Self.FK__TaiKhoan__Khachh__0559BDD1">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__usergr__064DE20A" Association="Self.FK__TaiKhoan__usergr__064DE20A">
+            <End Role="UserGroup" EntitySet="UserGroup" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThongSoKy__Sanph__5F691F13" Association="Self.FK__ThongSoKy__Sanph__5F691F13">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="ThongSoKyThuat" EntitySet="ThongSoKyThuat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BTL_MVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BTL_MVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LoaiSanPhams" EntityType="BTL_MVCModel.LoaiSanPham" />
+          <EntitySet Name="NCCs" EntityType="BTL_MVCModel.NCC" />
+          <EntitySet Name="HoaDonNhaps" EntityType="BTL_MVCModel.HoaDonNhap" />
+          <AssociationSet Name="FK__HoaDonNha__Ncc_i__72E607DB" Association="BTL_MVCModel.FK__HoaDonNha__Ncc_i__72E607DB">
+            <End Role="NCC" EntitySet="NCCs" />
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
+          </AssociationSet>
+          <EntitySet Name="SanPhams" EntityType="BTL_MVCModel.SanPham" />
+          <AssociationSet Name="FK__SanPham__Maloai___09C96D33" Association="BTL_MVCModel.FK__SanPham__Maloai___09C96D33">
+            <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
+            <End Role="SanPham" EntitySet="SanPhams" />
+          </AssociationSet>
+          <EntitySet Name="CTHDNs" EntityType="BTL_MVCModel.CTHDN" />
+          <AssociationSet Name="FK__CTHDN__Hoadonnha__190BB0C3" Association="BTL_MVCModel.FK__CTHDN__Hoadonnha__190BB0C3">
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
+            <End Role="CTHDN" EntitySet="CTHDNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHDN__Sanpham_i__19FFD4FC" Association="BTL_MVCModel.FK__CTHDN__Sanpham_i__19FFD4FC">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="CTHDN" EntitySet="CTHDNs" />
+          </AssociationSet>
+          <EntitySet Name="KhachHangs" EntityType="BTL_MVCModel.KhachHang" />
+          <EntitySet Name="Sliders" EntityType="BTL_MVCModel.Slider" />
+          <EntitySet Name="ThongSoKyThuats" EntityType="BTL_MVCModel.ThongSoKyThuat" />
+          <AssociationSet Name="FK__ThongSoKy__Sanph__5F691F13" Association="BTL_MVCModel.FK__ThongSoKy__Sanph__5F691F13">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="ThongSoKyThuat" EntitySet="ThongSoKyThuats" />
+          </AssociationSet>
+          <EntitySet Name="Khuyenmais" EntityType="BTL_MVCModel.Khuyenmai" />
+          <EntitySet Name="LienHes" EntityType="BTL_MVCModel.LienHe" />
+          <EntitySet Name="CTDHs" EntityType="BTL_MVCModel.CTDH" />
+          <EntitySet Name="DonHangs" EntityType="BTL_MVCModel.DonHang" />
+          <AssociationSet Name="FK__CTDH__Donhang_id__1A89E4E1" Association="BTL_MVCModel.FK__CTDH__Donhang_id__1A89E4E1">
+            <End Role="DonHang" EntitySet="DonHangs" />
+            <End Role="CTDH" EntitySet="CTDHs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTDH__Sanpham_id__1B7E091A" Association="BTL_MVCModel.FK__CTDH__Sanpham_id__1B7E091A">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="CTDH" EntitySet="CTDHs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonHang__Khachha__17AD7836" Association="BTL_MVCModel.FK__DonHang__Khachha__17AD7836">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="DonHang" EntitySet="DonHangs" />
+          </AssociationSet>
+          <EntitySet Name="BinhLuans" EntityType="BTL_MVCModel.BinhLuan" />
+          <AssociationSet Name="FK__BinhLuan__Khachh__2F8501C7" Association="BTL_MVCModel.FK__BinhLuan__Khachh__2F8501C7">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="BinhLuan" EntitySet="BinhLuans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuan__Sanpha__30792600" Association="BTL_MVCModel.FK__BinhLuan__Sanpha__30792600">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="BinhLuan" EntitySet="BinhLuans" />
+          </AssociationSet>
+          <EntitySet Name="MoreImgs" EntityType="BTL_MVCModel.MoreImg" />
+          <AssociationSet Name="FK__MoreImg__Sanpham__7246E95D" Association="BTL_MVCModel.FK__MoreImg__Sanpham__7246E95D">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="MoreImg" EntitySet="MoreImgs" />
+          </AssociationSet>
+          <EntitySet Name="NhanViens" EntityType="BTL_MVCModel.NhanVien" />
+          <EntitySet Name="UserGroups" EntityType="BTL_MVCModel.UserGroup" />
+          <EntitySet Name="TaiKhoans" EntityType="BTL_MVCModel.TaiKhoan" />
+          <AssociationSet Name="FK__TaiKhoan__Khachh__0559BDD1" Association="BTL_MVCModel.FK__TaiKhoan__Khachh__0559BDD1">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__usergr__064DE20A" Association="BTL_MVCModel.FK__TaiKhoan__usergr__064DE20A">
+            <End Role="UserGroup" EntitySet="UserGroups" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="LoaiSanPham">
+          <Key>
+            <PropertyRef Name="Maloai_id" />
+          </Key>
+          <Property Name="Maloai_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tenloai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SanPhams" Relationship="BTL_MVCModel.FK__SanPham__Maloai___09C96D33" FromRole="LoaiSanPham" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="NCC">
+          <Key>
+            <PropertyRef Name="Ncc_id" />
+          </Key>
+          <Property Name="Ncc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tenncc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="HoaDonNhaps" Relationship="BTL_MVCModel.FK__HoaDonNha__Ncc_i__72E607DB" FromRole="NCC" ToRole="HoaDonNhap" />
+        </EntityType>
+        <EntityType Name="HoaDonNhap">
+          <Key>
+            <PropertyRef Name="Hoadonnhap_id" />
+          </Key>
+          <Property Name="Hoadonnhap_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Thanhtien" Type="Double" />
+          <Property Name="Ngaynhap" Type="DateTime" Precision="3" />
+          <Property Name="Ncc_id" Type="Int32" />
+          <NavigationProperty Name="NCC" Relationship="BTL_MVCModel.FK__HoaDonNha__Ncc_i__72E607DB" FromRole="HoaDonNhap" ToRole="NCC" />
+          <NavigationProperty Name="CTHDNs" Relationship="BTL_MVCModel.FK__CTHDN__Hoadonnha__190BB0C3" FromRole="HoaDonNhap" ToRole="CTHDN" />
+        </EntityType>
+        <Association Name="FK__HoaDonNha__Ncc_i__72E607DB">
+          <End Type="BTL_MVCModel.NCC" Role="NCC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.HoaDonNhap" Role="HoaDonNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NCC">
+              <PropertyRef Name="Ncc_id" />
+            </Principal>
+            <Dependent Role="HoaDonNhap">
+              <PropertyRef Name="Ncc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="Sanpham_id" />
+          </Key>
+          <Property Name="Sanpham_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Maloai_id" Type="Int32" />
+          <Property Name="Tensanpham" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Anh" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Soluong" Type="Int32" />
+          <Property Name="Gia" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kichco" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dophangiai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Giakhuyenmai" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Viewcount" Type="Int32" />
+          <Property Name="ReducePrice" Type="Int32" />
+          <NavigationProperty Name="LoaiSanPham" Relationship="BTL_MVCModel.FK__SanPham__Maloai___09C96D33" FromRole="SanPham" ToRole="LoaiSanPham" />
+          <NavigationProperty Name="CTHDNs" Relationship="BTL_MVCModel.FK__CTHDN__Sanpham_i__19FFD4FC" FromRole="SanPham" ToRole="CTHDN" />
+          <NavigationProperty Name="ThongSoKyThuats" Relationship="BTL_MVCModel.FK__ThongSoKy__Sanph__5F691F13" FromRole="SanPham" ToRole="ThongSoKyThuat" />
+          <NavigationProperty Name="CTDHs" Relationship="BTL_MVCModel.FK__CTDH__Sanpham_id__1B7E091A" FromRole="SanPham" ToRole="CTDH" />
+          <NavigationProperty Name="BinhLuans" Relationship="BTL_MVCModel.FK__BinhLuan__Sanpha__30792600" FromRole="SanPham" ToRole="BinhLuan" />
+          <NavigationProperty Name="MoreImgs" Relationship="BTL_MVCModel.FK__MoreImg__Sanpham__7246E95D" FromRole="SanPham" ToRole="MoreImg" />
+        </EntityType>
+        <Association Name="FK__SanPham__Maloai___09C96D33">
+          <End Type="BTL_MVCModel.LoaiSanPham" Role="LoaiSanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.SanPham" Role="SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiSanPham">
+              <PropertyRef Name="Maloai_id" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="Maloai_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CTHDN">
+          <Key>
+            <PropertyRef Name="Macthdn_id" />
+          </Key>
+          <Property Name="Macthdn_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hoadonnhap_id" Type="Int32" />
+          <Property Name="Sanpham_id" Type="Int32" />
+          <Property Name="Dongia" Type="Double" />
+          <Property Name="Soluong" Type="Int32" />
+          <NavigationProperty Name="HoaDonNhap" Relationship="BTL_MVCModel.FK__CTHDN__Hoadonnha__190BB0C3" FromRole="CTHDN" ToRole="HoaDonNhap" />
+          <NavigationProperty Name="SanPham" Relationship="BTL_MVCModel.FK__CTHDN__Sanpham_i__19FFD4FC" FromRole="CTHDN" ToRole="SanPham" />
+        </EntityType>
+        <Association Name="FK__CTHDN__Hoadonnha__190BB0C3">
+          <End Type="BTL_MVCModel.HoaDonNhap" Role="HoaDonNhap" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.CTHDN" Role="CTHDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonNhap">
+              <PropertyRef Name="Hoadonnhap_id" />
+            </Principal>
+            <Dependent Role="CTHDN">
+              <PropertyRef Name="Hoadonnhap_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHDN__Sanpham_i__19FFD4FC">
+          <End Type="BTL_MVCModel.SanPham" Role="SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.CTHDN" Role="CTHDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="CTHDN">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="Khachhang_id" />
+          </Key>
+          <Property Name="Khachhang_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tenkhachhang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Anhdaidien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ngaysinh" Type="DateTime" Precision="3" />
+          <Property Name="Sdt" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DonHangs" Relationship="BTL_MVCModel.FK__DonHang__Khachha__17AD7836" FromRole="KhachHang" ToRole="DonHang" />
+          <NavigationProperty Name="BinhLuans" Relationship="BTL_MVCModel.FK__BinhLuan__Khachh__2F8501C7" FromRole="KhachHang" ToRole="BinhLuan" />
+          <NavigationProperty Name="TaiKhoans" Relationship="BTL_MVCModel.FK__TaiKhoan__Khachh__0559BDD1" FromRole="KhachHang" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Slider_id" />
+          </Key>
+          <Property Name="Slider_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Anh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ThongSoKyThuat">
+          <Key>
+            <PropertyRef Name="ThongSo_id" />
+          </Key>
+          <Property Name="ThongSo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Anh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sanpham_id" Type="Int32" />
+          <Property Name="Hedieuhang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ungdungphobien" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Congnghehinhanh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Dieukhienbanggiongnoi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Remotethongminh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Kichthuoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dophangiai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Namramat" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SanPham" Relationship="BTL_MVCModel.FK__ThongSoKy__Sanph__5F691F13" FromRole="ThongSoKyThuat" ToRole="SanPham" />
+        </EntityType>
+        <Association Name="FK__ThongSoKy__Sanph__5F691F13">
+          <End Type="BTL_MVCModel.SanPham" Role="SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.ThongSoKyThuat" Role="ThongSoKyThuat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="ThongSoKyThuat">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Khuyenmai">
+          <Key>
+            <PropertyRef Name="Khuyenmai_id" />
+          </Key>
+          <Property Name="Khuyenmai_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tieude" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Anh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LienHe">
+          <Key>
+            <PropertyRef Name="LienHe_id" />
+          </Key>
+          <Property Name="LienHe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hoten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tieude" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Noidung" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CTDH">
+          <Key>
+            <PropertyRef Name="Ctdh_id" />
+          </Key>
+          <Property Name="Ctdh_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Donhang_id" Type="Int32" />
+          <Property Name="Sanpham_id" Type="Int32" />
+          <Property Name="Tensanpham" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Anh" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Soluong" Type="Int32" />
+          <Property Name="Gia" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Tongtien" Type="Double" />
+          <Property Name="Giakhuyenmai" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="DonHang" Relationship="BTL_MVCModel.FK__CTDH__Donhang_id__1A89E4E1" FromRole="CTDH" ToRole="DonHang" />
+          <NavigationProperty Name="SanPham" Relationship="BTL_MVCModel.FK__CTDH__Sanpham_id__1B7E091A" FromRole="CTDH" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="DonHang">
+          <Key>
+            <PropertyRef Name="Donhang_id" />
+          </Key>
+          <Property Name="Donhang_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Khachhang_id" Type="Int32" />
+          <Property Name="Hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ngaydat" Type="DateTime" Precision="3" />
+          <Property Name="Tongtien" Type="Double" />
+          <Property Name="Trangthai" Type="Int32" />
+          <NavigationProperty Name="CTDHs" Relationship="BTL_MVCModel.FK__CTDH__Donhang_id__1A89E4E1" FromRole="DonHang" ToRole="CTDH" />
+          <NavigationProperty Name="KhachHang" Relationship="BTL_MVCModel.FK__DonHang__Khachha__17AD7836" FromRole="DonHang" ToRole="KhachHang" />
+        </EntityType>
+        <Association Name="FK__CTDH__Donhang_id__1A89E4E1">
+          <End Type="BTL_MVCModel.DonHang" Role="DonHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.CTDH" Role="CTDH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="Donhang_id" />
+            </Principal>
+            <Dependent Role="CTDH">
+              <PropertyRef Name="Donhang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTDH__Sanpham_id__1B7E091A">
+          <End Type="BTL_MVCModel.SanPham" Role="SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.CTDH" Role="CTDH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="CTDH">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonHang__Khachha__17AD7836">
+          <End Type="BTL_MVCModel.KhachHang" Role="KhachHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.DonHang" Role="DonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Khachhang_id" />
+            </Principal>
+            <Dependent Role="DonHang">
+              <PropertyRef Name="Khachhang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BinhLuan">
+          <Key>
+            <PropertyRef Name="Binhluan_id" />
+          </Key>
+          <Property Name="Binhluan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Anh" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Hoten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Khachhang_id" Type="Int32" />
+          <Property Name="Sanpham_id" Type="Int32" />
+          <NavigationProperty Name="KhachHang" Relationship="BTL_MVCModel.FK__BinhLuan__Khachh__2F8501C7" FromRole="BinhLuan" ToRole="KhachHang" />
+          <NavigationProperty Name="SanPham" Relationship="BTL_MVCModel.FK__BinhLuan__Sanpha__30792600" FromRole="BinhLuan" ToRole="SanPham" />
+        </EntityType>
+        <Association Name="FK__BinhLuan__Khachh__2F8501C7">
+          <End Type="BTL_MVCModel.KhachHang" Role="KhachHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.BinhLuan" Role="BinhLuan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Khachhang_id" />
+            </Principal>
+            <Dependent Role="BinhLuan">
+              <PropertyRef Name="Khachhang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuan__Sanpha__30792600">
+          <End Type="BTL_MVCModel.SanPham" Role="SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.BinhLuan" Role="BinhLuan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="BinhLuan">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MoreImg">
+          <Key>
+            <PropertyRef Name="MoreImg_id" />
+          </Key>
+          <Property Name="MoreImg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Anh1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Anh2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Anh3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Anh4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Anh5" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Anh6" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sanpham_id" Type="Int32" />
+          <NavigationProperty Name="SanPham" Relationship="BTL_MVCModel.FK__MoreImg__Sanpham__7246E95D" FromRole="MoreImg" ToRole="SanPham" />
+        </EntityType>
+        <Association Name="FK__MoreImg__Sanpham__7246E95D">
+          <End Type="BTL_MVCModel.SanPham" Role="SanPham" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.MoreImg" Role="MoreImg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="Sanpham_id" />
+            </Principal>
+            <Dependent Role="MoreImg">
+              <PropertyRef Name="Sanpham_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="Nhanvien_id" />
+          </Key>
+          <Property Name="Nhanvien_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tennhanvien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ngaysinh" Type="DateTime" Precision="3" />
+          <Property Name="Sdt" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Anh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="usergroup_id" />
+          </Key>
+          <Property Name="usergroup_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TaiKhoans" Relationship="BTL_MVCModel.FK__TaiKhoan__usergr__064DE20A" FromRole="UserGroup" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="Tentk" />
+          </Key>
+          <Property Name="Tentk" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Khachhang_id" Type="Int32" />
+          <Property Name="usergroup_id" Type="Int32" />
+          <Property Name="Anh" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KhachHang" Relationship="BTL_MVCModel.FK__TaiKhoan__Khachh__0559BDD1" FromRole="TaiKhoan" ToRole="KhachHang" />
+          <NavigationProperty Name="UserGroup" Relationship="BTL_MVCModel.FK__TaiKhoan__usergr__064DE20A" FromRole="TaiKhoan" ToRole="UserGroup" />
+        </EntityType>
+        <Association Name="FK__TaiKhoan__Khachh__0559BDD1">
+          <End Type="BTL_MVCModel.KhachHang" Role="KhachHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Khachhang_id" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="Khachhang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__usergr__064DE20A">
+          <End Type="BTL_MVCModel.UserGroup" Role="UserGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BTL_MVCModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="usergroup_id" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="usergroup_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BTL_MVCModelStoreContainer" CdmEntityContainer="BTL_MVCEntities">
+          <EntitySetMapping Name="LoaiSanPhams">
+            <EntityTypeMapping TypeName="BTL_MVCModel.LoaiSanPham">
+              <MappingFragment StoreEntitySet="LoaiSanPham">
+                <ScalarProperty Name="Tenloai" ColumnName="Tenloai" />
+                <ScalarProperty Name="Maloai_id" ColumnName="Maloai_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NCCs">
+            <EntityTypeMapping TypeName="BTL_MVCModel.NCC">
+              <MappingFragment StoreEntitySet="NCC">
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Tenncc" ColumnName="Tenncc" />
+                <ScalarProperty Name="Ncc_id" ColumnName="Ncc_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDonNhaps">
+            <EntityTypeMapping TypeName="BTL_MVCModel.HoaDonNhap">
+              <MappingFragment StoreEntitySet="HoaDonNhap">
+                <ScalarProperty Name="Ncc_id" ColumnName="Ncc_id" />
+                <ScalarProperty Name="Ngaynhap" ColumnName="Ngaynhap" />
+                <ScalarProperty Name="Thanhtien" ColumnName="Thanhtien" />
+                <ScalarProperty Name="Hoadonnhap_id" ColumnName="Hoadonnhap_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanPhams">
+            <EntityTypeMapping TypeName="BTL_MVCModel.SanPham">
+              <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="ReducePrice" ColumnName="ReducePrice" />
+                <ScalarProperty Name="Viewcount" ColumnName="Viewcount" />
+                <ScalarProperty Name="Giakhuyenmai" ColumnName="Giakhuyenmai" />
+                <ScalarProperty Name="Dophangiai" ColumnName="Dophangiai" />
+                <ScalarProperty Name="Kichco" ColumnName="Kichco" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="Tensanpham" ColumnName="Tensanpham" />
+                <ScalarProperty Name="Maloai_id" ColumnName="Maloai_id" />
+                <ScalarProperty Name="Sanpham_id" ColumnName="Sanpham_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTHDNs">
+            <EntityTypeMapping TypeName="BTL_MVCModel.CTHDN">
+              <MappingFragment StoreEntitySet="CTHDN">
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="Dongia" ColumnName="Dongia" />
+                <ScalarProperty Name="Sanpham_id" ColumnName="Sanpham_id" />
+                <ScalarProperty Name="Hoadonnhap_id" ColumnName="Hoadonnhap_id" />
+                <ScalarProperty Name="Macthdn_id" ColumnName="Macthdn_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="BTL_MVCModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="Anhdaidien" ColumnName="Anhdaidien" />
+                <ScalarProperty Name="Tenkhachhang" ColumnName="Tenkhachhang" />
+                <ScalarProperty Name="Khachhang_id" ColumnName="Khachhang_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sliders">
+            <EntityTypeMapping TypeName="BTL_MVCModel.Slider">
+              <MappingFragment StoreEntitySet="Slider">
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="Slider_id" ColumnName="Slider_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThongSoKyThuats">
+            <EntityTypeMapping TypeName="BTL_MVCModel.ThongSoKyThuat">
+              <MappingFragment StoreEntitySet="ThongSoKyThuat">
+                <ScalarProperty Name="Namramat" ColumnName="Namramat" />
+                <ScalarProperty Name="Dophangiai" ColumnName="Dophangiai" />
+                <ScalarProperty Name="Kichthuoc" ColumnName="Kichthuoc" />
+                <ScalarProperty Name="Remotethongminh" ColumnName="Remotethongminh" />
+                <ScalarProperty Name="Dieukhienbanggiongnoi" ColumnName="Dieukhienbanggiongnoi" />
+                <ScalarProperty Name="Congnghehinhanh" ColumnName="Congnghehinhanh" />
+                <ScalarProperty Name="Ungdungphobien" ColumnName="Ungdungphobien" />
+                <ScalarProperty Name="Hedieuhang" ColumnName="Hedieuhang" />
+                <ScalarProperty Name="Sanpham_id" ColumnName="Sanpham_id" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="ThongSo_id" ColumnName="ThongSo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Khuyenmais">
+            <EntityTypeMapping TypeName="BTL_MVCModel.Khuyenmai">
+              <MappingFragment StoreEntitySet="Khuyenmai">
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="Tieude" ColumnName="Tieude" />
+                <ScalarProperty Name="Khuyenmai_id" ColumnName="Khuyenmai_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LienHes">
+            <EntityTypeMapping TypeName="BTL_MVCModel.LienHe">
+              <MappingFragment StoreEntitySet="LienHe">
+                <ScalarProperty Name="Noidung" ColumnName="Noidung" />
+                <ScalarProperty Name="Tieude" ColumnName="Tieude" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="LienHe_id" ColumnName="LienHe_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTDHs">
+            <EntityTypeMapping TypeName="BTL_MVCModel.CTDH">
+              <MappingFragment StoreEntitySet="CTDH">
+                <ScalarProperty Name="Giakhuyenmai" ColumnName="Giakhuyenmai" />
+                <ScalarProperty Name="Tongtien" ColumnName="Tongtien" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="Tensanpham" ColumnName="Tensanpham" />
+                <ScalarProperty Name="Sanpham_id" ColumnName="Sanpham_id" />
+                <ScalarProperty Name="Donhang_id" ColumnName="Donhang_id" />
+                <ScalarProperty Name="Ctdh_id" ColumnName="Ctdh_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonHangs">
+            <EntityTypeMapping TypeName="BTL_MVCModel.DonHang">
+              <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="Tongtien" ColumnName="Tongtien" />
+                <ScalarProperty Name="Ngaydat" ColumnName="Ngaydat" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="Khachhang_id" ColumnName="Khachhang_id" />
+                <ScalarProperty Name="Donhang_id" ColumnName="Donhang_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BinhLuans">
+            <EntityTypeMapping TypeName="BTL_MVCModel.BinhLuan">
+              <MappingFragment StoreEntitySet="BinhLuan">
+                <ScalarProperty Name="Sanpham_id" ColumnName="Sanpham_id" />
+                <ScalarProperty Name="Khachhang_id" ColumnName="Khachhang_id" />
+                <ScalarProperty Name="Noidung" ColumnName="Noidung" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="Binhluan_id" ColumnName="Binhluan_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoreImgs">
+            <EntityTypeMapping TypeName="BTL_MVCModel.MoreImg">
+              <MappingFragment StoreEntitySet="MoreImg">
+                <ScalarProperty Name="Sanpham_id" ColumnName="Sanpham_id" />
+                <ScalarProperty Name="Anh6" ColumnName="Anh6" />
+                <ScalarProperty Name="Anh5" ColumnName="Anh5" />
+                <ScalarProperty Name="Anh4" ColumnName="Anh4" />
+                <ScalarProperty Name="Anh3" ColumnName="Anh3" />
+                <ScalarProperty Name="Anh2" ColumnName="Anh2" />
+                <ScalarProperty Name="Anh1" ColumnName="Anh1" />
+                <ScalarProperty Name="MoreImg_id" ColumnName="MoreImg_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="BTL_MVCModel.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="Tennhanvien" ColumnName="Tennhanvien" />
+                <ScalarProperty Name="Nhanvien_id" ColumnName="Nhanvien_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroups">
+            <EntityTypeMapping TypeName="BTL_MVCModel.UserGroup">
+              <MappingFragment StoreEntitySet="UserGroup">
+                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+                <ScalarProperty Name="usergroup_id" ColumnName="usergroup_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="BTL_MVCModel.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="usergroup_id" ColumnName="usergroup_id" />
+                <ScalarProperty Name="Khachhang_id" ColumnName="Khachhang_id" />
+                <ScalarProperty Name="Matkhau" ColumnName="Matkhau" />
+                <ScalarProperty Name="Tentk" ColumnName="Tentk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

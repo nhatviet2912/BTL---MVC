@@ -1,0 +1,219 @@
+﻿
+@{
+    Layout = null;
+   
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/CSS/main.css">
+    <link rel="stylesheet" href="~/Content/CSS/chitietsp.css">
+    <link rel="stylesheet" href="~/Content/CSS/base.css">
+    <link rel="stylesheet" href="~/Content/CSS/reponsive.css">
+    <link href="~/Content/CSS/sale.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/CSS/giohang.css?v=3.4.1">
+    <link rel="stylesheet" href="~/Content/CSS/login.css">
+    <link rel="stylesheet" href="~/Content/CSS/dangky.css?v=3.4.1">
+    <link rel="stylesheet" href="~/Content/CSS/contact.css">
+    <link rel="stylesheet" href="~/Content/CSS/checkout.css" />
+    <link rel="stylesheet" href="~/Content/font/fontawesome-free-6.0.0-web/css/all.min.css">
+    @*<a href="~/Content/bootstrap.min.css.map">~/Content/bootstrap.min.css.map</a>*@
+    <title>Điện máy xanh</title>
+</head>
+<body>
+    <div class="App">
+        <div class="Header">
+            <div class="container">
+                <div class="navbars hide-on-tablet-mobile">
+                    <ul class="navbar__list">
+                        <li class="navbar__list-item">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            Cam kết giá tốt
+                        </li>
+                        <li class="navbar__list-item">
+                            <a href="" class="navbar__list-item-link">
+                                <i class="fa-solid fa-truck"></i>
+                                Miễn phí vận chuyển
+                            </a>
+                        </li>
+                        <li class="navbar__list-item">
+                            <a href="" class="navbar__list-item-link">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                Bảo hành tận nơi
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar__list">
+                        <li class="navbar__list-item">
+                            <span class="navbar__list-title--no">Kết nối</span>
+                            <a class="navbar__list-icons-link" href="https://www.facebook.com/baoanh.bui.3363" target="blank">
+                                <i class="navbar__list-icons fa-brands fa-facebook">
+                                    <p class="navbar__list-icons-mesenger">Kết nối facebook</p>
+                                </i>
+                            </a>
+                            <a class="navbar__list-icons-link" href="https://www.instagram.com/baoanh0911/saved/" target="blank">
+                                <i class="navbar__list-icons fa-brands fa-instagram">
+                                    <p class="navbar__list-icons-mesenger">Kết nối instagram</p>
+                                </i>
+                            </a>
+                        </li>
+                        <li class="navbar__list-item navbar__list-item--Strong">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <a href="/Login/Dangki"> Đăng ký </a>
+
+                        </li>
+                        <li class="navbar__list-item navbar__list-item--Strong">
+                            <i class="fa-solid fa-user"></i>
+                            <a href="/Login/DangNhap">Đăng nhập</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="Header-with-search row">
+                    <div class="Header__logo">
+                        <a href="/Home/Index">
+
+                            <img class="Header__logo-img" src="~/Content/IMG/logodienmayxanh.png">
+                        </a>
+                    </div>
+                    <div class="Header__search hide-on-mobile" style="position: relative;">
+                        <form action="/Home/FindText" style="width: 100%;">
+                            <input type="search" name="search" class="Header__search-input" placeholder="Nhập tên TiVi... cần tìm">
+                            <button class="Header__search-btn" type="submit" style="position:absolute; right:0; ">
+                                <i class="Header__search-btn-icon fa-solid fa-magnifying-glass"></i>
+                            </button>
+
+                        </form>
+                    </div>
+                    <div class="Header__cart">
+                        <a href="/Home/Cart">
+                            <i class="Header__cart-icon fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @RenderBody()
+        <div class="Footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h2 class="Footer__heading">Thông tin chung</h2>
+                        <hr>
+                        <ul class="Footer-list">
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Giới thiệu về cửa hàng
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Thông tin liên hệ
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Thông tin tuyển dụng
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Tin tức
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <h2 class="Footer__heading">Chính sách mua hàng</h2>
+                        <hr>
+                        <ul class="Footer-list">
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Chính sách bảo hành
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Chính sách đổi trả hàng, hoàn tiền
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Phương thức thanh toán
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Vận chuyển, lắp đặt
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <h2 class="Footer__heading">Hỗ trợ khách hàng</h2>
+                        <hr>
+                        <ul class="Footer-list">
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Hướng dẫn mua hàng online
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Thông tin khuyến mãi
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Gửi yêu cầu bảo hành
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    Góp ý, khiếu nại
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <h2 class="Footer__heading">Theo dõi chúng tôi</h2>
+                        <hr>
+                        <ul class="Footer-list">
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="https://www.facebook.com/dienmayxanhcom">
+                                    <i style="color: blue;" class=" fa-brands fa-facebook-square">
+                                    </i>
+                                    Fanpage Điện máy xanh
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="https://www.youtube.com/channel/UCggNkBGDPfgxUbHBjGQU5sA">
+                                    <i style="color: red;" class=" fa-brands fa-youtube"></i>
+                                    Điện máy xanh
+                                </a>
+                            </li>
+                            <li class="Footer-items">
+                                <a class="Footer-items__link" href="">
+                                    <i class="fa-brands fa-facebook-messenger"></i>
+                                    Chat với tư vấn viên
+                                </a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/Scripts/JS/sliderproduct.js"></script>*@
+</body>
+</html>

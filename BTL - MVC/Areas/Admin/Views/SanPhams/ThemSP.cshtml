@@ -1,0 +1,178 @@
+﻿@model BTL___MVC.Database.SanPham
+@{
+    ViewBag.Title = "ThemSP";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-app="myApp" , ng-controller="myControl">
+    <form ng-submit="addData()">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>SanPham</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Maloai_id, "Maloai_id", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                Mã Loại
+                <div class="col-md-10">
+                    @Html.DropDownList("Maloai_id", null, htmlAttributes: new { @class = "form-control", @ng_model = "sanPham.Maloai_id" })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                Tensanpham
+                <div class="col-md-10">
+                    <input type="text" ng-model="sanPham.Tensanpham" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Anh
+                <div class="col-md-10">
+                    <input type="file" multiple="multiple" ngf-select="UploadFile($files)" ng-model="sanPham.Anh" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Soluong
+                <div class="col-md-10">
+                    <input type="text" ng-model="sanPham.Soluong" class="form-control" />
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                Gia
+                <div class="col-md-10">
+                    <input type="text" ng-model="sanPham.Gia" class="form-control" />
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Mota, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                Mô tả
+                <div class="col-md-10">
+                    <textarea ng-model="sanPham.Mota" class="Mota" id="Mota" >
+
+                    </textarea>
+
+                    
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Kichco, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                Kích cỡ
+                <div class="col-md-10">
+                    <input type="text" ng-model="sanPham.Kichco" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Độ phân giải
+                <div class="col-md-10">
+                    <input type="text" ng-model="sanPham.Dophangiai" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Giakhuyenmai, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                Giá khuyến mại
+                <div class="col-md-10">
+                    <input type="text" ng-model="sanPham.Giakhuyenmai" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Viewcount, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                Viewcount
+                <div class="col-md-10">
+                    <input type="text" ng-model="sanPham.Viewcount" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.ReducePrice, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                ReducePrice
+                <div class="col-md-10">
+                    <input type="text" ng-model="sanPham.ReducePrice" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    </form>
+</div>
+
+@section jsFooter{
+
+    <script src="//cdn.ckeditor.com/4.5.7/full/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.5.7/full/adapters/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-ckeditor/0.2.1/ng-ckeditor.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
+    <script>
+        CKEDITOR.replace('Mota');
+        var myApp = angular.module("myApp", ['ngFileUpload'])
+        myApp.controller("myControl", addData);
+        function addData($scope, $http, $httpParamSerializerJQLike, Upload) {
+            $scope.sanPham = {};
+            $scope.addData = function () {
+                debugger;
+                Token = angular.element('input[name="__RequestVerificationToken"]').attr('value');
+                $scope.sanPham.__RequestVerificationToken = Token;
+                dataRequest = $scope.sanPham;
+                $scope.sanPham.Mota = CKEDITOR.instances['Mota'].getData();
+                $http({
+                    method: 'POST',
+                    url: '/Admin/SanPhams/ThemSP',
+                    data: $httpParamSerializerJQLike(dataRequest),
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+
+                })
+                    .then(function (res) {
+                        if (res.msg == false) {
+                            alert("Lỗi thêm bản ghi");
+                        }
+                        else {
+                            alert("Thêm bản ghi thành công");
+                            window.location.href = "/Admin/SanPhams/Index";
+                        }
+                    });
+            };
+
+            $scope.UploadFile = function (files) {
+                $scope.SelectedFiles = files;
+                if ($scope.SelectedFiles && $scope.SelectedFiles.length) {
+                    debugger;
+                    Upload.upload({
+                        method: 'POST',
+                        url: '/Admin/SanPhams/Upload',
+                        data: {
+                            files: $scope.SelectedFiles
+                        }
+                    }).then(function (response) {
+                        $timeout(function () {
+                            $scope.Result = response.data;
+                        });
+                    });
+                }
+
+            };
+
+            
+        } 
+
+
+    </script>
+}

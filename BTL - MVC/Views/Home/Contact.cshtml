@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <h2 class="page-heading">
+                    <span class="page-heading-title" style="color:darkblue">
+                        Liên hệ
+                        <hr style="width:1170px; margin:25px 0;" />
+                    </span>
+                </h2>
+
+                <form action="/Home/Contact" method="post" enctype="multipart/form-data" role="form">
+                    <div class="col-md-7 col-sm-7" style="float:left">
+                        <h4 class="contact-title">Mẫu liên hệ</h4>
+                        <p>Vui lòng điền vào mẫu dưới:</p>
+
+                        <!-- BEGIN FORM-->
+                        <div class="form-group">
+                            <label for="contacts-name">Họ và Tên</label>
+                            <input type="text" class="input form-control contact-ip" name="HoTen" id="HoTen">
+                        </div>
+                        <div class="form-group">
+                            <label for="contacts-email">Số điện thoại</label>
+                            <input type="text" class="input form-control contact-ip" name="SDT" id="SDT">
+                        </div>
+                        <div class="form-group">
+                            <label for="contacts-email">Email</label>
+                            <input type="email" class="input form-control contact-ip" name="Email" id="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="contacts-email">Địa chỉ</label>
+                            <input type="text" class="input form-control contact-ip" name="DiaChi" id="DiaChi">
+                        </div>
+
+                        <input class="btn btn-danger btn-enter" type="submit" onclick="return confirm('Cảm ơn đã liên hệ đến chúng tôi!')"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        <button type="reset" class="btn btn-default btn-enter">Soạn lại</button>
+
+                        <!-- END FORM-->
+                    </div>
+
+                    <div class="col-md-5 col-sm-5 sidebar2" style="float:left">
+                        <h4 class="contact-my">Liên hệ chúng tôi</h4>
+                        <address>
+                            <h2>Điện máy Xanh</h2><br>
+                            Nhân Hòa, Mỹ Hào, Hưng Yên, Việt Nam<br>
+                            <abbr title="Phone">Số điện thoại:</abbr>(+84) 901567443
+                        </address>
+                        <address>
+                            <strong>Email</strong><br>
+                            <a href="mailto:info@email.com">daonhatviet2912@email.com</a><br>
+                        </address>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-5 col-12">
+                                <div class="footer-widget">
+                                    <div class="footer-widget-l-content">
+                                        <ul>
+                                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                            <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
+                                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contacts-email">Tiêu đề</label>
+                            <input type="text" class="input form-control contact-ip" name="TieuDe" id="TieuDe">
+                        </div>
+                        <div class="form-group">
+                            <label for="contacts-message">Nội dung</label>
+                            <textarea class="input form-control" rows="3" name="NoiDung" id="NoiDung"></textarea>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 50px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.2561676218543!2d106.05781401493117!3d20.942225386045347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a30555555555%3A0x39a8acd006ab8e69!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTxrAgUGjhuqFtIEvhu7kgVGh14bqtdCBIxrBuZyBZw6puLCBDxqEgc-G7nyAy!5e0!3m2!1svi!2s!4v1575469471694!5m2!1svi!2s" width="1170" height="500" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

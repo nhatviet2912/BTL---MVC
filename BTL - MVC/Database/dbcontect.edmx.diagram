@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cca37401904143ed81413634abacc145" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="BTL_MVCModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="BTL_MVCModel.NCC" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="BTL_MVCModel.HoaDonNhap" Width="1.5" PointX="3" PointY="10.25" />
+        <AssociationConnector Association="BTL_MVCModel.FK__HoaDonNha__Ncc_i__72E607DB" />
+        <EntityTypeShape EntityType="BTL_MVCModel.SanPham" Width="1.5" PointX="2.875" PointY="5.5" />
+        <AssociationConnector Association="BTL_MVCModel.FK__SanPham__Maloai___09C96D33" />
+        <EntityTypeShape EntityType="BTL_MVCModel.CTHDN" Width="1.5" PointX="5.25" PointY="5.75" />
+        <AssociationConnector Association="BTL_MVCModel.FK__CTHDN__Hoadonnha__190BB0C3" />
+        <AssociationConnector Association="BTL_MVCModel.FK__CTHDN__Sanpham_i__19FFD4FC" />
+        <EntityTypeShape EntityType="BTL_MVCModel.KhachHang" Width="1.5" PointX="3.75" PointY="1.375" />
+        <EntityTypeShape EntityType="BTL_MVCModel.Slider" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BTL_MVCModel.ThongSoKyThuat" Width="1.5" PointX="5.125" PointY="13.875" />
+        <AssociationConnector Association="BTL_MVCModel.FK__ThongSoKy__Sanph__5F691F13" />
+        <EntityTypeShape EntityType="BTL_MVCModel.Khuyenmai" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BTL_MVCModel.LienHe" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BTL_MVCModel.CTDH" Width="1.5" PointX="11.25" PointY="7.125" />
+        <EntityTypeShape EntityType="BTL_MVCModel.DonHang" Width="1.5" PointX="7.625" PointY="3" />
+        <AssociationConnector Association="BTL_MVCModel.FK__CTDH__Donhang_id__1A89E4E1" />
+        <AssociationConnector Association="BTL_MVCModel.FK__CTDH__Sanpham_id__1B7E091A" />
+        <AssociationConnector Association="BTL_MVCModel.FK__DonHang__Khachha__17AD7836" />
+        <EntityTypeShape EntityType="BTL_MVCModel.BinhLuan" Width="1.5" PointX="5.875" PointY="0.75" />
+        <AssociationConnector Association="BTL_MVCModel.FK__BinhLuan__Khachh__2F8501C7" />
+        <AssociationConnector Association="BTL_MVCModel.FK__BinhLuan__Sanpha__30792600" />
+        <EntityTypeShape EntityType="BTL_MVCModel.MoreImg" Width="1.5" PointX="5.125" PointY="18.375" />
+        <AssociationConnector Association="BTL_MVCModel.FK__MoreImg__Sanpham__7246E95D" />
+        <EntityTypeShape EntityType="BTL_MVCModel.NhanVien" Width="1.5" PointX="7.375" PointY="10.75" />
+        <EntityTypeShape EntityType="BTL_MVCModel.UserGroup" Width="1.5" PointX="3.75" PointY="25.875" />
+        <EntityTypeShape EntityType="BTL_MVCModel.TaiKhoan" Width="1.5" PointX="8" PointY="14.25" />
+        <AssociationConnector Association="BTL_MVCModel.FK__TaiKhoan__Khachh__0559BDD1" />
+        <AssociationConnector Association="BTL_MVCModel.FK__TaiKhoan__usergr__064DE20A" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

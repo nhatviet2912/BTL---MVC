@@ -1,0 +1,532 @@
+﻿@model BTL___MVC.Database.SanPham
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tk = (BTL___MVC.Database.TaiKhoan)System.Web.HttpContext.Current.Session["taikhoan"];
+    var lsp = (List<BTL___MVC.Database.SanPham>)ViewBag.lsp;
+    var ts = (List<BTL___MVC.Database.ThongSoKyThuat>)ViewBag.ts;
+    var cmt = (List<BTL___MVC.Database.BinhLuan>)ViewBag.cmt;
+    var img = (List<BTL___MVC.Database.MoreImg>)ViewBag.img;
+}
+
+<div class="container-sp">
+    <div class="container">
+        <div class="container-sp__link ">
+            <a href="/Home/Index">Trang chủ</a>
+            <i class="container-sp__icons fa-solid fa-chevron-right"></i>
+            <a href="" style="color: black">@ViewBag.tenloaisp</a>
+        </div>
+        <div class="container-sp__product">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="container__product-bigimg">
+                        <img class="container__product-img" src="~/Image/@Model.Anh">
+                    </div>
+                    <div class="container__product-smallimg">
+                        @foreach(var q in img)
+            {
+
+                        <div class="container__product-listimg" style="margin: 0px 3px 0px 0px;">
+                            <img src="~/Image/@q.Anh1" class="container__product-img1">
+                        </div>
+                        <div class="container__product-listimg">
+                            <img src="~/Image/@q.Anh2" class="container__product-img1">
+                        </div>
+                        <div class="container__product-listimg">
+                            <img src="~/Image/@q.Anh3" class="container__product-img1">
+                        </div>
+                        <div class="container__product-listimg">
+                            <img src="~/Image/@q.Anh4" class="container__product-img1">
+                        </div>
+                        <div class="container__product-listimg">
+                            <img src="~/Image/@q.Anh5" class="container__product-img1">
+                        </div>
+                        <div class="container__product-listimg">
+                            <img src="~/Image/@q.Anh6" class="container__product-img1">
+                        </div>
+            }
+                    </div>
+                    <div class="container__product-content">
+                        <ul>
+                            <h4>Đặc điểm nổi bật</h4>
+                            <li>Màn hình vô cực có độ phân giải 4K (3840×2160) hiển thị hình ảnh sắc nét</li>
+                            <li>Công nghệ Dual LED tăng cường độ tương phản, độ chính xác của màu sắc</li>
+                            <li>Công nghệ Quantum Dot hiển thị 100% dải màu cho hình ảnh chân thực</li>
+                            <li>Công nghệ Quantum HDR mang đến khung hình chi tiết, độ tương phản cao</li>
+                            <li>Tận hưởng âm thanh vòm theo chuyển động hình ảnh nhờ công nghệ OTS</li>
+                            <li>Trải nghiệm hình ảnh mượt mà với công nghệ Motion Xcelerator Turbo+</li>
+                        </ul>
+                    </div>
+                    <div class="container__content-hotrokh hide-on-mobile">
+                        <h4>Hỗ trợ khách hàng</h4>
+                    </div>
+                    <div class="container__product-chamsockh hide-on-mobile">
+                        <img src="~/Content/IMG/ho-tro-kh.png">
+                        <div class="container__product-ndchamsockh">
+                            <a href="mailto:dienmayxanh@gmail.com">dienmayxanh@gmail.com</a><br>
+                            <a href="">Chat với chúng tôi</a>
+                            <p>
+                                Mua hàng - Góp ý - Bảo hành
+                                Gọi <span>1800.6800</span> Miễn phí
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="detail-product-item__name">
+                        <h4>@Model.Tensanpham</h4>
+                    </div>
+                    <div class="detail-product-item__assess">
+                        <p>5.0</p>
+                        <i class="detail-product__assess-star fa-solid fa-star"></i>
+                        <i class="detail-product__assess-star fa-solid fa-star"></i>
+                        <i class="detail-product__assess-star fa-solid fa-star"></i>
+                        <i class="detail-product__assess-star fa-solid fa-star"></i>
+                        <i class="detail-product__assess-star fa-solid fa-star"></i>
+                        <span>@Model.Viewcount</span>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-price-right__price-right">
+                            <div class="detail-price-right__curent">
+                                @string.Format("{0:#,##0.000 đ}", Model.Giakhuyenmai)
+                            </div>
+                            <div class="detail-price-right__old">
+                                <span class="detail-price-right__percent">
+                                    @Model.ReducePrice %
+                                </span>
+                                <span class="detail-price-right__old-percent">
+                                    @string.Format("{0:#,##0.000 đ}", Model.Gia)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                            <div class="detail-product-item__price-left">
+                                <h3 style="margin-top: 0;">Giá sốc online</h3>
+                                <p> @string.Format("{0:#,##0.000 đ}", Model.Giakhuyenmai)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-product-item__compare">
+                        <span class="detail-price-item__compare-item1"> Trả góp 0%</span>
+                        <span class="detail-price-item__compare-item2">Mới</span>
+                    </div>
+                    <button type="button" class="detail-product-item__compare-heading">
+                        Mua ngay
+                    </button>
+                    <div class="detail-product-item__compare-content">
+                        @if (Session["taikhoan"] != null)
+                        {
+                            <a href="/Home/addCart/@Model.Sanpham_id" id="thanhcong" class="compare-content__addcart btn " style="line-height: 48px;">
+                                Thêm vào giỏ hàng
+                            </a>
+                            <button type="button" class="compare-content__tragop">
+                                Mua trả góp
+                            </button>
+
+                        }
+                        else
+                        {
+                            <a href="/Login/DangNhap" id="thatbai" class="compare-content__addcart btn " style="line-height: 48px;">
+                                Thêm vào giỏ hàng
+                            </a>
+                            <button type="button" class="compare-content__tragop">
+                                Mua trả góp
+                            </button>
+                            @*<script>
+                                    alert("Vui lòng đăng nhập trước khi mua hàng")
+                                </script>*@
+                        }
+
+                    </div>
+                    <div class="detail-product-item__phone">
+                        <p>Gọi đặt mua 1800.6800 (08h - 21h)</p>
+                    </div>
+                    <div class="detail-product-item__sale">
+                        <div class="detail-product-item__sale1" style="margin-top: 20px;">
+                            <span class="detail-product-item__sale-stt">
+                                1
+                            </span>
+                            <p class="detail-product-item__sale-noidung">
+                                Mua Online nhập mã MID04 giảm thêm đến đến 1.000.000đ từ 14 - 17/04.
+                            </p>
+                        </div>
+                        <div class="detail-product-item__sale1">
+                            <span class="detail-product-item__sale-stt">
+                                2
+                            </span>
+                            <p class="detail-product-item__sale-noidung">
+                                Tặng Gói dịch vụ Max của FPT Play trong 1 tháng trị giá 88.000đ
+                            </p>
+                        </div>
+                        <div class="detail-product-item__sale1">
+                            <span class="detail-product-item__sale-stt">
+                                3
+                            </span>
+                            <p class="detail-product-item__sale-noidung">
+                                Tặng Gói Gia đình tiêu chuẩn của ClipTV trong 1 năm trị giá 480.000đ
+                            </p>
+                        </div>
+                        <div class="detail-product-item__sale1">
+                            <span class="detail-product-item__sale-stt">
+                                4
+                            </span>
+                            <p class="detail-product-item__sale-noidung">
+                                Tặng Gói dịch vụ cơ bản của VTV Cab On trong 1 năm trị giá 360.000đ
+                            </p>
+                        </div>
+                        <div class="detail-product-item__sale1">
+                            <span class="detail-product-item__sale-stt">
+                                5
+                            </span>
+                            <p class="detail-product-item__sale-noidung">
+                                Tặng Gói dịch vụ VIP của VTV Cab On trong 3 tháng trị giá 198.000đ
+                            </p>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="container__product-info">
+                <div class="container">
+                    <h4 class="container__product-name ">Sản phẩm cùng loại</h4>
+                    <hr>
+                    <div class="row">
+                        @foreach (var x in lsp.Take(4))
+                        {
+                            <div class="col-lg-3 col-md-4 col-sm-6 hide-on-mobile">
+                                <a href="" class="Home-product-item">
+                                    <img src="/Content/IMG/@x.Anh" class="Home-product-item__img">
+                                    <div class="Home-product-item__sale">
+                                        <img class="Home-product-item__sale-icon" src="~/Content/IMG/icon1.png">
+                                        <span class="Home-product-item__sale-title"> giảm sốc</span>
+                                    </div>
+                                    <h4 class="Home-product-item__name">
+                                        @x.Tensanpham
+                                    </h4>
+                                    <div class="Home-product-item__compare">
+                                        <span class="Home-product-item__compare-item"> @x.Kichco</span>
+                                        <span class="Home-product-item__compare-item">@x.Dophangiai</span>
+                                    </div>
+                                    <div class="Home-product-item__title-online">
+                                        <p>Online giá rẻ</p>
+                                    </div>
+                                    <div class="Home-product-item__price">
+                                        <span class="Home_product-item__price-old">@string.Format("{0:#,##0.000 đ}", x.Giakhuyenmai)</span>
+                                        <span class="Home_product-item__price-percent">@x.ReducePrice%</span>
+                                        <span class="Home_product-item__price-curent">@string.Format("{0:#,##0.000 đ}", x.Gia)</span>
+                                    </div>
+                                    <div class="Home-product-item__action">
+                                        <div class="Home-product-item__rating">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <span class="Home-product-item__like">
+                                            @x.Viewcount
+                                        </span>
+                                    </div>
+                                    <div class="Home-product-item__sale-off">
+                                        <img src="~/Content/IMG/docquyen.png">
+                                    </div>
+                                </a>
+                            </div>
+
+                        }
+
+                    </div>
+                    <h4 class="container__product-name " style="margin-top: 60px;">Tính năng thông số kỹ thuật</h4>
+                    <hr>
+                    <div class="row">
+                        @foreach (var y in ts)
+                        {
+
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                <img src="/Image/@y.Anh" style="width: 100%;">
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                <h4 class="container__product-thongsochitiet">Thông số kỹ thuật</h4>
+                                <table class="container__product-thongsochitiets table-striped ">
+
+                                    <tr>
+                                        <td class="title">Hệ điều hành:</td>
+                                        <td class="value">@y.Hedieuhang</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Ứng dụng phổ biến:</td>
+                                        <td class="value">@y.Ungdungphobien</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Công nghệ hình ảnh:</td>
+                                        <td class="value">@y.Congnghehinhanh</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Điều khiển bằng giọng nói:</td>
+                                        <td class="value">@y.Dieukhienbanggiongnoi</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Remote thông minh:</td>
+                                        <td class="value">@y.Remotethongminh</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Kích thước:</td>
+                                        <td class="value">@y.Kichthuoc</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Năm ra mắt:</td>
+                                        <td class="value">@String.Format("{0:d}", y.Namramat)</td>
+                                    </tr>
+
+
+                                </table>
+                                <div class="container__product-xemthem js-xemthem">
+                                    <h4>xem thêm thông số kỹ thuật</h4>
+                                </div>
+                            </div>
+                        
+                        }
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="container-sp2">
+                <div class="container mvc">
+                    @Html.Raw(Model.Mota)
+
+                </div>
+            </div>
+            <div class="container-comment">
+                <div class="container-comment__header">
+                    <h4>Đánh giá và nhận xét</h4>
+                </div>
+                <div class="container-comment__container">
+                    <div class="container-comment__container1">
+                        <h4>Đánh giá và nhận xét về Samsung Smart TV Crystal UHD UA55AU8100</h4>
+                    </div>
+                    <div class="container-comment__star">
+                        <div class="container-comment__5star">
+                            <span>5.0 </span>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            
+                        </div>
+                        
+                    </div>
+                    @foreach (var x in cmt)
+                    {
+                        <div class="container-comment__noidung">
+                            <div class="container-comment__noidung1">
+                                <div class="container-comment__name">
+                                    <img src="~/Image/@x.Anh" style="width: 50px; height: 50px; object-fit: cover;"/>
+                                    <p>@x.Hoten</p>
+                                </div>
+                                    <p>@x.Noidung</p>
+                                <div class="container-comment__like">
+                                    <span><i style="color: #a0a2ac;" class="fa-solid fa-rotate-left"></i>Trả lời</span>
+                                    <p> Thích <i style="color: #a0a2ac;" class="fa-solid fa-thumbs-up"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+            <div class="container-hoidap">
+                <h4>Hỏi đáp và bình luận</h4>
+                <div class="container-hoidap1">
+                    <p>Có 0 bình luận về Smart Tivi Samsung Crystal UHD 4K 55 inch UA55AU8000KXXV</p>
+                </div>
+                <div>
+                    @if (Session["taikhoan"] != null)
+                    {
+
+                        <form action="/Home/Comment/@Model.Sanpham_id" method="post">
+                            @*<input type="text" />*@
+                            <textarea id="noidung" name="noidung" placeholder="Mời bạn bình luận.Vui lòng nhập Tiếng Việt có dấu"></textarea>
+                            <input type="submit" value="Gửi" class="form-control post" />
+                        </form>
+                    }
+                    else
+                    {
+                        <form>
+                            <textarea placeholder="Mời bạn bình luận. Vui lòng nhập tiếng việt có dấu"></textarea>
+                            <a href="/Login/DangNhap" class="form-control btn post" id="postCmt" >Gửi</a>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal">
+        <div class="modal__overlay js_overlay">
+        </div>
+        <div class="modal__body">
+            <div class="modal__inner">
+                <div class="modal__inner-header">
+                    <h4 class="thongso">
+                        Thông số kỹ thuật Smart Tivi QLED Samsung 4K 43 inch QA43Q60AAKXXV
+                    </h4>
+                    <i class="modal__inner-icon fa-solid fa-xmark"></i>
+                </div>
+                <div class="modal__inner-content">
+                    <h4> Đặc điểm sản phẩm</h4>
+                    <table>
+                        <tr>
+                            <td class="modal__inner-title">Model:</td>
+                            <td class="modal__inner-value">	QA50Q60AAKXXV</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Màu sắc:</td>
+                            <td class="modal__inner-value">	Đen</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Nhà sản xuất:</td>
+                            <td class="modal__inner-value">Samsung</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Xuất xứ:</td>
+                            <td class="modal__inner-value">VietNam</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Năm ra mắt :</td>
+                            <td class="modal__inner-value">2021</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Thời gian bảo hành:</td>
+                            <td class="modal__inner-value">24 tháng</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Địa điểm bảo hành:</td>
+                            <td class="modal__inner-value">Điện máy xanh</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Loại Tivi:</td>
+                            <td class="modal__inner-value">Tivi Qled</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Kích thước màn hình:</td>
+                            <td class="modal__inner-value">43 inch</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Độ phân giải:</td>
+                            <td class="modal__inner-value">4K (3840 x 2160) Pixels</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Bộ vi sử lý:</td>
+                            <td class="modal__inner-value">	Quantum Processor Lite</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Smart Tivi:</td>
+                            <td class="modal__inner-value">Supreme UHD Dimming, Dual LED, Quantum HDR, Quantum Dot</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Công nghệ âm thanh:</td>
+                            <td class="modal__inner-value">Công nghệ Object Tracking Sound (OTS Lite)</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Tổng công suất loa:</td>
+                            <td class="modal__inner-value">20W/td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Số lượng loa:</td>
+                            <td class="modal__inner-value">2CH</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Cổng WiFi:</td>
+                            <td class="modal__inner-value">Wifi 5, Bluetooth 4.2</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Cổng HDMI:</td>
+                            <td class="modal__inner-value">3 x HDMI</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Cổng USB:</td>
+                            <td class="modal__inner-value">2 x USB</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Độ phân giải:</td>
+                            <td class="modal__inner-value">4K (3840 x 2160) Pixels</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Chia sẻ thông minh:</td>
+                            <td class="modal__inner-value">GoogleAssist, Apple TV, Airplay2</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Khối lượng không chân đế:</td>
+                            <td class="modal__inner-value">8.4 kg</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Chiều cao:</td>
+                            <td class="modal__inner-value">560mm</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Chiều dài:</td>
+                            <td class="modal__inner-value">966 mm</td>
+                        </tr>
+                        <tr>
+                            <td class="modal__inner-title">Chiều rộng</td>
+                            <td class="modal__inner-value">26mm</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        var modals = document.querySelector('.modal')
+        var view = document.querySelector('.js-xemthem')
+        var btnDelete = document.querySelector('.modal__inner-icon')
+        var overlay = document.querySelector('.js_overlay')
+        var muahangtb = document.getElementById('thatbai')
+        //var muahangtc = document.getElementById('thanhcong')
+        var thanhcong = document.getElementById('thanhcong')
+        var postCmt = document.getElementById('postCmt')
+
+        view.addEventListener('click', function () {
+            modals.classList.add('open')
+        })
+        btnDelete.addEventListener('click', function () {
+            modals.classList.remove('open')
+        })
+        overlay.addEventListener('click', function () {
+            modals.classList.remove('open')
+        })
+
+        const imgs = document.querySelectorAll('.container__product-img1')
+        const img = document.querySelector('.container__product-img')
+        var currenindex = 0
+
+        imgs.forEach(function (value, index) {
+            value.addEventListener('click', function (e) {
+                currenindex = index
+                img.src = imgs[currenindex].src
+            });
+        })
+        muahangtb.addEventListener('click', function () {
+            alert("Vui lòng đăng nhập trước khi mua hàng")
+        });
+
+        postCmt.addEventListener('click', function () {
+            alert("Vui lòng đăng nhập trước khi comment");
+        });        
+        //function UpCmt() {
+        //    debugger;
+        //    if (postCmt) {
+        //    }
+        //};
+
+    </script>
+</div>
